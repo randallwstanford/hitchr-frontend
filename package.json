@@ -1,0 +1,49 @@
+{
+  "name": "hitchr-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "server": "nodemon server/index.js",
+    "dev-build": "webpack --config webpack.config.js -w",
+    "build": "webpack --config webpack.config.js",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Creative-Beavers/hitchr-frontend.git"
+  },
+  "author": "Creative Beavers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-Creative-Beavers/hitchr-frontend/issues"
+  },
+  "homepage": "https://github.com/The-Creative-Beavers/hitchr-frontend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-static-gzip": "^2.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.2.2",
+    "compression-webpack-plugin": "^9.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslit": "^6.0.0",
+    "jest": "^27.2.5",
+    "mini-css-extract-plugin": "^2.4.2",
+    "nodemon": "^2.0.13",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0"
+  }
+}
