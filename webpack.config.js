@@ -5,6 +5,10 @@ const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = (env) => ({
 
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+
   mode: 'development',
   plugins: [
     new webpack.DefinePlugin({
@@ -13,7 +17,7 @@ module.exports = (env) => ({
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new CompressionPlugin(),
   ],
-  entry: path.resolve(__dirname, 'client', 'src'),
+  entry: path.resolve(__dirname, 'client', 'src', 'index.jsx'),
   output: {
     path: path.resolve(__dirname, 'client', 'dist'),
     filename: 'bundle.js',
@@ -44,5 +48,6 @@ module.exports = (env) => ({
       },
     ],
   },
+
 
 });

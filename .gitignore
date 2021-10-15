@@ -1,7 +1,4 @@
-bundle.js
-
-bundle.js.gz
-
 node_modules
-
 coverage
+.idea
+bundle.*
