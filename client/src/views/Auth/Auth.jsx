@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Auth = () => {
+const Auth = () => {
   const addPaymentMethod = (e) => {
     e.preventDefault();
     // Add Payment
