@@ -10,4 +10,12 @@ export default {
         .catch(reject);
     }),
   },
+  user: {
+    getAnswerList: (userId) => new Promise((resolve, reject) => {
+      axios.get(`${baseUrl}/user/${userId}`)
+        .then(({ data }) => resolve(data))
+        .catch(reject);
+    }),
+
+  },
 };
