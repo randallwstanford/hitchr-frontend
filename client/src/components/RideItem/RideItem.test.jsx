@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ResultItem from './ResultItem';
+import RideItem from './RideItem';
 
 const ride = {
   rideId: 12345,
@@ -10,5 +10,5 @@ const ride = {
 };
 
 it('should render without crashing', () => {
-  render(<ResultItem ride={ride} />);
+  render(<RideItem ride={ride} />);
 });
