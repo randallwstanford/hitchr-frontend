@@ -16,6 +16,10 @@ export default {
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
-
+    getMessages: (userId, recipientId) => new Promise((resolve, reject) => {
+      axios.get(`${baseUrl}/messages/${userId}/?recipient=${recipientId}`)
+        .then(({ data }) => resolve(data))
+        .catch(reject);
+    }),
   },
 };
