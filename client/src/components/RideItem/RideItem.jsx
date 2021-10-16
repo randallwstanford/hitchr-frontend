@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Stylesheet
-import './ResultItem.css';
+import './RideItem.css';
 
-const ResultItem = ({ ride }) => {
+const RideItem = ({ ride }) => {
   const { rideId, driver } = ride;
   return (
     <div data-testid={`ride-result${rideId}`}>
@@ -15,9 +15,9 @@ const ResultItem = ({ ride }) => {
   );
 };
 
-export default ResultItem;
+export default RideItem;
 
-ResultItem.propTypes = {
+RideItem.propTypes = {
   ride: PropTypes.shape({
     rideId: PropTypes.number.isRequired,
     driver: PropTypes.shape({
