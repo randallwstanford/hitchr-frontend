@@ -43,7 +43,6 @@ module.exports = (env) => ({
         exclude: /node_modules/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
-          { loader: 'css-loader' },
         ],
       },
     ],
