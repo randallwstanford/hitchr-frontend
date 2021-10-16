@@ -4,9 +4,11 @@ const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = (env) => ({
+
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+
   mode: 'development',
   plugins: [
     new webpack.DefinePlugin({
@@ -46,5 +48,6 @@ module.exports = (env) => ({
       },
     ],
   },
+
 
 });
