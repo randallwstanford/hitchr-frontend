@@ -11,18 +11,19 @@ export default {
     }),
   },
   user: {
-    getAnswerList: (userId) => new Promise((resolve, reject) => {
+    getUser: (userId) => new Promise((resolve, reject) => {
       axios.get(`${baseUrl}/user/${userId}`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
+  },
+  messages: {
     getMessages: (userId, recipientId) => new Promise((resolve, reject) => {
       axios.get(`${baseUrl}/messages/${userId}/?recipient=${recipientId}`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
-    postMessage: (formData) => new Promise((resolve, reject) => {
-      const { userId, recipientId } = formData; // ?
+    postMessage: (formData, userId, recipientId) => new Promise((resolve, reject) => {
       axios.post(`${baseUrl}/messages/${userId}?recipient=${recipientId}`, formData)
         .then(({ data }) => resolve(data))
         .catch(reject);
