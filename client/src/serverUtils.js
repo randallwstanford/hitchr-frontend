@@ -9,8 +9,13 @@ export default {
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
-    searchRides: (start, end) => new Promise((resolve, reject) => {
+    searchRide: (start, end) => new Promise((resolve, reject) => {
       axios.get(`${baseUrl}/ride?start=${start}&end=${end}`)
+        .then(({ data }) => resolve(data))
+        .catch(reject);
+    }),
+    addRider: (rideid) => new Promise((resolve, reject) => {
+      axios.patch(`${baseUrl}/ride/${rideid}`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
