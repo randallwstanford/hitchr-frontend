@@ -5,6 +5,7 @@ import { render, screen } from '@testing-library/react';
 // Components
 import PayMethodList from './PayMethodList';
 
+// Dummy Data
 import payMethodList from '../../dummyData/payMethodList';
 
 describe('PayMethodList', () => {

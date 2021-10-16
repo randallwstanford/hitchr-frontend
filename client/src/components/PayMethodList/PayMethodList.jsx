@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 import PayMethod from '../PayMethod/PayMethod';
 
 const PayMethodList = ({ methods }) => (
-  <div>
+  <div data-testid="PayMethodList">
     {
       methods.length
-        ? methods.map((method) => <PayMethod method={method} />)
+        ? methods.map((method) => <PayMethod method={method} key={`payMethod-${method.url}`} />)
         : null
     }
   </div>
