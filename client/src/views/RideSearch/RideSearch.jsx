@@ -6,8 +6,14 @@ import React from 'react';
 const RideSearch = () => (
   <div>
     <form>
-      <input id="input-start-loc" />
-      <input id="input-start-loc" />
+      <label htmlFor="input-start-loc">
+        Starting Location:
+        <input id="input-start-loc" />
+      </label>
+      <label htmlFor="input-start-loc">
+        Ending Location:
+        <input id="input-start-loc" />
+      </label>
       <button type="submit">Search Rides</button>
     </form>
     <div id="search-results">
