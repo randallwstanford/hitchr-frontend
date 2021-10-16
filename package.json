@@ -8,7 +8,8 @@
     "server": "nodemon server/index.js",
     "dev-build": "webpack --config webpack.config.js -w",
     "build": "webpack --config webpack.config.js",
-    "start": "node server"
+    "start": "node server",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
+    "@testing-library/react": "^12.1.2",
     "babel": "^6.23.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
