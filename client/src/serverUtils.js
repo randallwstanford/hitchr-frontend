@@ -14,8 +14,8 @@ export default {
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
-    addRider: (rideid) => new Promise((resolve, reject) => {
-      axios.patch(`${baseUrl}/ride/${rideid}`)
+    addRider: (rideId) => new Promise((resolve, reject) => {
+      axios.patch(`${baseUrl}/ride/${rideId}`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
