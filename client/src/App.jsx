@@ -2,16 +2,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-// Sub-Components
+// Views
 import RideSearch from './views/RideSearch/RideSearch';
 import Dashboard from './views/Dashboard/Dashboard';
 import Auth from './views/Auth/Auth';
 import User from './views/User/User';
+import CreateRide from './views/CreateRide/CreateRide';
 
 const App = () => (
   <Router>
-    <Route path="/ridesearch">
-      <RideSearch />
+    <Route path="/createride">
+      <CreateRide />
     </Route>
     <Route path="/dashboard">
       <Dashboard />
@@ -24,6 +25,12 @@ const App = () => (
     </Route>
     <Route exact path="/">
       <div id="Home" />
+    </Route>
+    <Route path="/ridesearch">
+      <RideSearch />
+    </Route>
+    <Route exact path="/">
+      <RideSearch />
     </Route>
   </Router>
 );
