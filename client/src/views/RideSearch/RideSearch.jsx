@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import RideList from '../../components/RideList/RideList';
 import serverUtils from '../../serverUtils';
 
 // Stylesheet
-// import './RideSearch.css';
+import './RideSearch.css';
 
 const RideSearch = () => {
   const [rideResults, setRideResults] = useState([]);
@@ -14,18 +15,32 @@ const RideSearch = () => {
     setRideResults([]);
   }
   return (
-    <div>
-      <form>
-        <label htmlFor="input-start-loc">
-          Starting Location:
-          <input id="input-start-loc" />
-        </label>
-        <label htmlFor="input-end-loc">
-          Ending Location:
-          <input id="input-end-loc" />
-        </label>
+    <div id="RideSearch">
+      <table id="ride-search-form">
+        <tbody>
+          <tr>
+            <td>
+              <label htmlFor="input-start-loc">
+                Starting Location:
+              </label>
+            </td>
+            <td>
+              <input id="input-start-loc" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label htmlFor="input-start-loc">
+                Ending Location:
+              </label>
+            </td>
+            <td>
+              <input id="input-end-loc" />
+            </td>
+          </tr>
+        </tbody>
         <button type="button" onClick={handleSearch}>Search Rides</button>
-      </form>
+      </table>
       <div id="search-results">
         <RideList rides={rideResults} />
       </div>
