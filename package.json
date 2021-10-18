@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "server": "nodemon server/index.js",
-    "dev-build": "webpack --env NODE_ENV=DEV --config webpack.config.js -w",
+    "dev-build": "webpack --mode=development --config webpack.config.js -w",
     "build": "webpack --config webpack.config.js",
     "start": "node server",
     "lint": "eslint ."
@@ -42,6 +42,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "compression-webpack-plugin": "^9.0.0",
+    "css-loader": "^6.4.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.25.2",
@@ -49,6 +50,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.2.5",
     "mini-css-extract-plugin": "^2.4.2",
     "nodemon": "^2.0.13",

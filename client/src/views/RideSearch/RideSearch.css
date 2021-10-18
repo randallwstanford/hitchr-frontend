@@ -1,0 +1,7 @@
+#ride-search-form{
+  display: flex;
+  flex-direction: column;
+}
+#RideSearch button{
+  width: fit-content;
+}

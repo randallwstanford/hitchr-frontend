@@ -13,46 +13,51 @@ import CreateRide from './views/CreateRide/CreateRide';
 // Context
 import UserContext from './contexts/UserContext';
 
+// Style Sheet
+import './App.css';
+
 // Dummy Data
 import userInfo from './dummyData/userInfo';
 import emptyUser from './dummyData/emptyUser';
 
 const App = () => {
-  const [user] = useState(process.env.NODE_ENV === 'DEV' ? userInfo : emptyUser);
+  const [user] = useState(process.env.NODE_ENV === 'development' ? userInfo : emptyUser);
   return (
-    <Router>
-      <UserContext.Provider value={user}>
-        <Route path={['/login', '/signup']}>
-          <Auth />
-        </Route>
-        {
-          !user || !user.sessionId
-            ? <Redirect to="/login" />
-            : (
-              <>
-                <Route path="/createride">
-                  <CreateRide />
-                </Route>
-                <Route path="/dashboard">
-                  <Dashboard />
-                </Route>
-                <Route path="/user/:userId">
-                  <User />
-                </Route>
-                <Route exact path="/">
-                  <div id="Home" />
-                </Route>
-                <Route path="/ridesearch">
-                  <RideSearch />
-                </Route>
-                <Route exact path="/">
-                  <Redirect to="/ridesearch" />
-                </Route>
-              </>
-            )
-        }
-      </UserContext.Provider>
-    </Router>
+    <div id="App">
+      <Router>
+        <UserContext.Provider value={user}>
+          <Route path={['/login', '/signup']}>
+            <Auth />
+          </Route>
+          {
+            !user || !user.sessionId
+              ? <Redirect to="/login" />
+              : (
+                <>
+                  <Route path="/createride">
+                    <CreateRide />
+                  </Route>
+                  <Route path="/dashboard">
+                    <Dashboard />
+                  </Route>
+                  <Route path="/user/:userId">
+                    <User />
+                  </Route>
+                  <Route exact path="/">
+                    <div id="Home" />
+                  </Route>
+                  <Route path="/ridesearch">
+                    <RideSearch />
+                  </Route>
+                  <Route exact path="/">
+                    <Redirect to="/ridesearch" />
+                  </Route>
+                </>
+              )
+          }
+        </UserContext.Provider>
+      </Router>
+    </div>
   );
 };
 export default App;
