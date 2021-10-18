@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "server": "nodemon server/index.js",
-    "dev-build": "webpack --config webpack.config.js -w",
+    "dev-build": "webpack --env NODE_ENV=DEV --config webpack.config.js -w",
     "build": "webpack --config webpack.config.js",
     "start": "node server",
     "lint": "eslint ."
