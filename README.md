@@ -114,31 +114,77 @@ Since this is a Single-Page-Application (SPA), different views are rendered to t
 
 This section describes each of the app's views.
 
----
+Below are the wireframe designs for each View:
 
+
+| `RideSearch` | `CreateRide` | `User` |
+|-|-|-|
+|![RideSearch wireframe](readmeImgs/RideSearch.jpg)|![CreateRide wireframe](readmeImgs/CreateRide.jpg)|![User wireframe](readmeImgs/User.jpg)|
+| **`Dashboard`** | **`Dashboard`** (w/ review modal) | **`Auth`** |
+![Dashboard wireframe](readmeImgs/Dashboard.jpg)|![Dashboard w/ review wireframe](readmeImgs/Dashboard-Review.jpg)|![CreateRide wireframe](readmeImgs/Auth.jpg)|
+
+---
 
 ### `RideSearch`
 
 The `RideSearch` view allows users to input a starting city and ending city and see any posted rides matching their search inputs.
 
-#### Child Components:
-- `RideList`
+#### **Child Components:**
+- `RideList` ***(shared)***
   - Responsible for rendering the results of `RideSearch`'s query.
   - For each search result, `RideList` renders a `RideItem` child-component.
     - `RideItem`
       - renders the relevant info (_username, etc_) for each ride result
 
-![RideSearch wireframe](readmeImgs/Search For Rides.jpg)
+---
+
+### `CreateRide`
+
+This view provides the user inputs necessary to post a new ride.
 
 ---
 
-### Dashboard
+### `Dashboard`
 
-The `Dashboard` view shows relevant info about the currently logged in user.
+The `Dashboard` view shows relevant info about the currently logged in user. This info includes their username, payment methods, and saved trips.
+
+A **stretch goal** for this view is a feature for marking trips as complete, then allowing the user to rate the driver / other passengers from this ride.
+
+#### **Child Components:**
+- `PayMethodList` ***(shared)***
+  - This component is shared by multiple views and is responsible for rendering each payment method associated with a particular user.
+    - `PayMethod`
+      - This component is rendered by `PayMethodList` and renders a single payment method (e.g. Venmo or Paypal etc) for a user's list of payment methods. This component renders an `<a>` link to the relevant account (e.g. their paypal URL etc) which is displayed as the name of the provider.
+- `UpcomingTrips`
+  - Renders a `RideList` component for a user's upcoming rides.
+  - `RideList` ***(shared)***
+    - Responsible for rendering the users trips which aren't marked as complete.
+    - For each upcoming ride, `RideList` renders a `RideItem` child-component.
+        - `RideItem`
+        - renders the relevant info (_username, etc_) for each ride result
+- `PastTrips`
+  - Renders a `RideList` component for a user's completed rides.
+  - `RideList` ***(shared)***
+    - Responsible for rendering the users trips which aren't marked as complete.
+    - For each upcoming ride, `RideList` renders a `RideItem` child-component.
+        - `RideItem`
+          - renders the relevant info (_username, etc_) for each ride result
+
 ___
 
 ### User
 
+Renders user info for a specific user, as well as the currently logged in user's message history with the specified user.
+
+#### **Child Components:**
+- `PayMethodList` ***(shared)***
+  - This component is shared by multiple views and is responsible for rendering each payment method associated with the user.
+    - `PayMethod`
+      - This component is rendered by `PayMethodList` and renders a single payment method (e.g. Venmo or Paypal etc) for a user's list of payment methods. This component renders an `<a>` link to the relevant account (e.g. their paypal URL etc) which is displayed as the name of the provider.
+- `MessageList`
+  - Renders the message history between the current user and the user of the current profile. Renders each specific message via a `Message` component.
+    - `Message`
+      - Child of `MessagesList` - renders a single message from the list.
 ___
 
 ### Auth
