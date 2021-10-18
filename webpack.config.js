@@ -12,7 +12,7 @@ module.exports = (env) => ({
   mode: 'development',
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.ENV': JSON.stringify(env.ENV),
+      'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV),
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new CompressionPlugin(),
