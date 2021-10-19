@@ -28,5 +28,6 @@ jobs:
           cache: 'npm'
       - run: touch client/src/components/GMapKey.js
       - run: echo "const GMapKeyr = 'abc123';\nexport default gMapKey;" >> client/src/components/GMapKey.js
+      - run: run run install
       - run: npm run lint
       - run: npm test
