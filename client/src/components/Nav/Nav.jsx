@@ -18,7 +18,7 @@ const Nav = () => {
       <div id="navRight">
         <a href="/search">Search Rides</a>
         <a href="/create">Create Ride</a>
-        <a href="/dashboard">{username}</a>
+        <a id="username" href="/dashboard">{username}</a>
       </div>
     </div>
   );
