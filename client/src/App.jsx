@@ -19,6 +19,7 @@ import './App.css';
 // Dummy Data
 import userInfo from './dummyData/userInfo';
 import emptyUser from './dummyData/emptyUser';
+import Nav from './components/Nav/Nav';
 
 const App = () => {
   const [user] = useState(process.env.NODE_ENV === 'development' ? userInfo : emptyUser);
@@ -26,6 +27,7 @@ const App = () => {
     <div id="App">
       <Router>
         <UserContext.Provider value={user}>
+          <Nav />
           <Route path={['/login', '/signup']}>
             <Auth />
           </Route>

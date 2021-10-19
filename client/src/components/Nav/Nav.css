@@ -1,0 +1,14 @@
+#Nav{
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.1rem solid black;
+}
+#navRight{
+  position: absolute;
+  right: 1rem;
+}
