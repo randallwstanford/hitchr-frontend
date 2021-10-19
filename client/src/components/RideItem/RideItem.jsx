@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 import './RideItem.css';
 
 const RideItem = ({ ride }) => {
-  const { rideId, driver, startDest, endDest } = ride;
+  const {
+    rideId, driver, startDest, endDest,
+  } = ride;
   return (
     <div data-testid={`ride-result${rideId}`}>
       <span>{driver.username}</span>

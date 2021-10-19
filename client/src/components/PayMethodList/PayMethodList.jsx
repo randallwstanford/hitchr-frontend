@@ -19,5 +19,8 @@ const PayMethodList = ({ methods }) => (
 export default PayMethodList;
 
 PayMethodList.propTypes = {
-  methods: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  methods: PropTypes.arrayOf(PropTypes.shape()),
+};
+PayMethodList.defaultProps = {
+  methods: [],
 };

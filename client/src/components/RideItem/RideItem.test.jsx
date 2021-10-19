@@ -7,6 +7,8 @@ const ride = {
   driver: {
     username: 'MrDriver',
   },
+  startDest: 'Abq',
+  endDest: 'Dnv',
 };
 
 it('should render without crashing', () => {

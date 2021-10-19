@@ -23,38 +23,40 @@ function CreateRide() {
     <div id="CreateRide">
       <form>
         <table>
-          <tr>
-            <td>
-              <label htmlFor="input-start-loc">Starting Location:</label>
-            </td>
-            <td>
-              <input id="input-start-loc" onBlur={handleStartInput} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="input-end-loc">Ending Location:</label>
-            </td>
-            <td>
-              <input id="input-end-loc" onBlur={handleEndInput} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="input-price">Price:</label>
-            </td>
-            <td>
-              <input id="input-price" type="number" step="0.01" min="0" max="1000000000" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="input-seats">Available Seats:</label>
-            </td>
-            <td>
-              <input id="input-seats" type="number" min="0" max="50" />
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>
+                <label htmlFor="input-start-loc">Starting Location:</label>
+              </td>
+              <td>
+                <input id="input-start-loc" onBlur={handleStartInput} />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="input-end-loc">Ending Location:</label>
+              </td>
+              <td>
+                <input id="input-end-loc" onBlur={handleEndInput} />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="input-price">Price:</label>
+              </td>
+              <td>
+                <input id="input-price" type="number" step="0.01" min="0" max="1000000000" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="input-seats">Available Seats:</label>
+              </td>
+              <td>
+                <input id="input-seats" type="number" min="0" max="50" />
+              </td>
+            </tr>
+          </tbody>
         </table>
         <button type="button" onClick={handleSubmit}>Create Ride</button>
       </form>

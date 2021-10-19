@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 import './RideList.css';
 import RideItem from '../RideItem/RideItem';
 
-const RideList = ({ rides, searched }) => (
+const RideList = ({ rides }) => (
   <div id="RideList">
     {
       rides.length
-        ? rides.map((ride) => <RideItem ride={ride} />)
+        ? rides.map((ride) => <RideItem ride={ride} key={ride.rideId} />)
         : (
           <div id="no-rides">
             <p>No rides match your search. Create this ride for others?</p>
