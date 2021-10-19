@@ -16,7 +16,7 @@ import messagesList from '../../dummyData/messagesList';
 const messages = camelcaseKeys(messagesList.body.messages);
 
 const User = () => (
-  <div>
+  <div className="user">
     <span>Username</span>
     <PayMethodList methods={payMethodList} />
     <MessagesList messages={messages} />
