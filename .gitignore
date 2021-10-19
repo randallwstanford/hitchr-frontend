@@ -3,3 +3,4 @@ coverage
 .idea
 gMapKey.js
 bundle.*
+.DS_Store

@@ -1,5 +1,5 @@
+import camelcaseKeys from 'camelcase-keys';
 import rideList from './dummyData/rideList';
-import * as camelcaseKeys from 'camelcase-keys';
 
 const axios = require('axios');
 
@@ -36,6 +36,15 @@ export default {
           .catch(reject);
       } else {
         resolve(camelcaseKeys(rideList.body.rides));
+      }
+    }),
+    completeRide: (rideData) => new Promise((resolve, reject) => {
+      if (process.env.API_URL) {
+        axios.patch(`/user/${rideData.rideId}/complete`, rideData)
+          .then(({ data }) => resolve(data))
+          .catch(reject);
+      } else {
+        resolve();
       }
     }),
   },

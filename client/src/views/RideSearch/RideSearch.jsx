@@ -8,7 +8,9 @@ import './RideSearch.css';
 
 const RideSearch = () => {
   const [rideResults, setRideResults] = useState([]);
+  const [searched, setSearched] = useState(false);
   function handleSearch() {
+    setSearched(true);
     const start = document.getElementById('input-start-loc').value;
     const end = document.getElementById('input-end-loc').value;
     serverUtils.searchRide(start, end).then((results) => setRideResults(results));
@@ -16,34 +18,33 @@ const RideSearch = () => {
   }
   return (
     <div id="RideSearch">
-      <table id="ride-search-form">
-        <tbody>
-          <tr>
-            <td>
-              <label htmlFor="input-start-loc">
-                Starting Location:
-              </label>
-            </td>
-            <td>
-              <input id="input-start-loc" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="input-start-loc">
-                Ending Location:
-              </label>
-            </td>
-            <td>
-              <input id="input-end-loc" />
-            </td>
-          </tr>
-        </tbody>
+      <form id="ride-search-form">
+        <h1>Search For Rideshares</h1>
+        <label htmlFor="input-start-loc">
+          PICKUP
+          <input id="input-start-loc" />
+        </label>
+        <label htmlFor="input-start-loc">
+          DROPOFF
+          <input id="input-end-loc" />
+        </label>
         <button type="button" onClick={handleSearch}>Search Rides</button>
-      </table>
-      <div id="search-results">
-        <RideList rides={rideResults} />
-      </div>
+      </form>
+      {
+        searched
+          ? (
+            <div id="search-results">
+              <RideList rides={rideResults} />
+            </div>
+          ) : (
+            <div id="create-ride-plug">
+              <p>Want to drive fellow Hitchrs?</p>
+              <a href="/createride">
+                <button type="button">Create A Ride</button>
+              </a>
+            </div>
+          )
+      }
     </div>
   );
 };

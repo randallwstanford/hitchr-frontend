@@ -19,6 +19,12 @@ const Dashboard = () => {
         setRides(userRides);
       });
   }
+  const completeRide = () => {
+    const rideData = {};
+    serverUtils.user.completeRide(rideData)
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
     fetchRides();
   }, []);
@@ -28,7 +34,7 @@ const Dashboard = () => {
         <span>{ username }</span>
         <PayMethodList methods={paymentMethods} />
       </div>
-      <UpcomingRides rides={rides} />
+      <UpcomingRides rides={rides} completeRide={completeRide} />
     </div>
   );
 };
