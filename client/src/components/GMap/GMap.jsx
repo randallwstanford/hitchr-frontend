@@ -5,13 +5,14 @@ import { Loader } from '@googlemaps/js-api-loader';
 
 // Stylesheet
 import './GMap.css';
-import gMapKey from './gMapKey';
+import GMapKey from './gMapKey';
 
 const GMap = ({ start, end }) => {
+  console.log(GMapKey);
   function initMap() {
     return new Promise((resolve) => {
       const loader = new Loader({
-        apiKey: gMapKey,
+        apiKey: GMapKey,
         version: 'weekly',
       });
       loader.load().then((googleData) => {
