@@ -35,7 +35,7 @@ export default {
           .then(({ data }) => resolve(data))
           .catch(reject);
       } else {
-        resolve(camelcaseKeys(rideList.body.rides));
+        resolve(camelcaseKeys(rideList.body.rides, { deep: true }));
       }
     }),
     completeRide: (rideData) => new Promise((resolve, reject) => {

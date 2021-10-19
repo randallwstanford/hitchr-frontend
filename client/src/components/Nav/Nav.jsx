@@ -15,7 +15,11 @@ const Nav = () => {
         <a id="logo" href="/">Hitchr</a>
         <span>Share a ride - save the planet!</span>
       </div>
-      <a id="navRight" href="/dashboard">{username}</a>
+      <div id="navRight">
+        <a href="/search">Search Rides</a>
+        <a href="/create">Create Ride</a>
+        <a id="username" href="/dashboard">{username}</a>
+      </div>
     </div>
   );
 };

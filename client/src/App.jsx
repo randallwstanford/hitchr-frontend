@@ -43,7 +43,7 @@ const App = () => {
                 ? <Redirect to="/login" />
                 : (
                   <>
-                    <Route path="/createride">
+                    <Route path="/create">
                       <CreateRide />
                     </Route>
                     <Route path="/dashboard">
@@ -55,11 +55,11 @@ const App = () => {
                     <Route exact path="/">
                       <div id="Home" />
                     </Route>
-                    <Route path="/ridesearch">
+                    <Route path="/search">
                       <RideSearch />
                     </Route>
                     <Route exact path="/">
-                      <Redirect to="/ridesearch" />
+                      <Redirect to="/search" />
                     </Route>
                   </>
                 )
