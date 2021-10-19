@@ -7,14 +7,16 @@ import './RideList.css';
 import RideItem from '../RideItem/RideItem';
 
 const RideList = ({ rides }) => (
-  <div>
+  <div id="RideList">
     {
       rides.length
-        ? rides.map((ride) => <RideItem ride={ride} />)
+        ? rides.map((ride) => <RideItem ride={ride} key={ride.rideId} />)
         : (
-          <div>
-            <p>No rides match your search. Do you want to create this ride for others?</p>
-            <button type="button">Create Trip</button>
+          <div id="no-rides">
+            <p>No rides match your search. Create this ride for others?</p>
+            <a href="/createride">
+              <button type="button">Create Trip</button>
+            </a>
           </div>
         )
     }
@@ -27,8 +29,12 @@ RideList.propTypes = {
     PropTypes.shape({
       rideId: PropTypes.number.isRequired,
       driver: PropTypes.shape({
-        username: PropTypes.number.isRequired,
+        username: PropTypes.string.isRequired,
       }).isRequired,
     }),
   ).isRequired,
+  searched: PropTypes.bool,
+};
+RideList.defaultProps = {
+  searched: false,
 };

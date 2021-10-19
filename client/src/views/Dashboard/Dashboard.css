@@ -1,0 +1,8 @@
+#Dashboard{
+  width: 100%;
+}
+#user-info{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

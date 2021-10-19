@@ -1,3 +1,7 @@
+#CreateRide{
+  display: flex;
+  width: 100%;
+}
 #CreateRide form{
   display: flex;
   flex-direction: column;

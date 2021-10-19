@@ -1,7 +1,10 @@
+// Libraries
 import React from 'react';
 import { render } from '@testing-library/react';
-import UpcomingTrips from './UpcomingTrips';
+
+// Components
+import GMap from './GMap';
 
 it('should render without crashing', () => {
-  render(<UpcomingTrips />);
+  render(<GMap />);
 });
