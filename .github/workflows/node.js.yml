@@ -27,7 +27,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: touch client/src/components/GMapKey.js
-      - run: echo "const GMapKeyr = 'abc123';\nexport default gMapKey;" >> client/src/components/GMapKey.js
+      - run: echo "export default 'abc123';" >> client/src/components/GMapKey.js
       - run: npm install
       - run: npm run lint
       - run: npm test
