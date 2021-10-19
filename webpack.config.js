@@ -1,9 +1,9 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-module.exports = (/* env */) => ({
+module.exports = (env) => ({
 
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -11,11 +11,9 @@ module.exports = (/* env */) => ({
 
   mode: 'development',
   plugins: [
-    /*
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV),
+      'process.env.API_URL': JSON.stringify(env.API_URL),
     }),
-     */
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new CompressionPlugin(),
   ],

@@ -21,7 +21,7 @@ RideItem.propTypes = {
   ride: PropTypes.shape({
     rideId: PropTypes.number.isRequired,
     driver: PropTypes.shape({
-      username: PropTypes.number.isRequired,
+      username: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import PayMethod from '../PayMethod/PayMethod';
 
 const PayMethodList = ({ methods }) => (
-  <div data-testid="PayMethodList">
+  <div id="PayMethodList" data-testid="PayMethodList">
     {
       methods.length
         ? methods.map((method) => <PayMethod method={method} key={`payMethod-${method.url}`} />)

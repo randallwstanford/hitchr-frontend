@@ -20,9 +20,10 @@ import './App.css';
 import userInfo from './dummyData/userInfo';
 import emptyUser from './dummyData/emptyUser';
 import Nav from './components/Nav/Nav';
+import * as camelcaseKeys from 'camelcase-keys';
 
 const App = () => {
-  const [user] = useState(process.env.NODE_ENV === 'development' ? userInfo : emptyUser);
+  const [user] = useState(process.env.NODE_ENV === 'development' ? camelcaseKeys(userInfo, { deep: true }) : emptyUser);
   return (
     <div id="App">
       <Router>

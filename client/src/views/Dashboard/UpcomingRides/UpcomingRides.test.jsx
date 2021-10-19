@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import UpcomingTrips from './UpcomingTrips';
+import UpcomingRides from './UpcomingRides';
 
 it('should render without crashing', () => {
-  render(<UpcomingTrips />);
+  render(<UpcomingRides />);
 });
