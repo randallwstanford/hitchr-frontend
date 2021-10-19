@@ -1,0 +1,21 @@
+.RideItem{
+  background-color: var(--med);
+  color: var(--dark);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 0.1rem solid var(--dark);
+}
+.RideItem span{
+  margin: 0 2rem;
+}
+.RideItem a{
+  background-color: var(--dark);
+  color: var(--med);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+.RideItem button{
+  font-size: 1rem;
+  background-color: var(--dark);
+  color: var(--med);
+}

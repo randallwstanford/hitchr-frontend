@@ -7,14 +7,23 @@ import './RideItem.css';
 
 const RideItem = ({ ride }) => {
   const {
-    rideId, driver, startDest, endDest,
+    rideId, driver, startDest, endDest, complete,
   } = ride;
   return (
-    <div data-testid={`ride-result${rideId}`}>
-      <span>{driver.username}</span>
+    <div className="RideItem" data-testid={`ride-result${rideId}`}>
+      <a href={`/users/${driver.driverId}`}>{driver.username}</a>
       <span>{startDest}</span>
       <span>{endDest}</span>
-      <button type="button">Join</button>
+      {
+        !driver
+          ? <button type="button">Join</button>
+          : null
+      }
+      {
+        driver && !complete
+          ? <button type="button">Complete</button>
+          : null
+      }
     </div>
   );
 };
@@ -26,8 +35,14 @@ RideItem.propTypes = {
     rideId: PropTypes.number.isRequired,
     driver: PropTypes.shape({
       username: PropTypes.string.isRequired,
+      driverId: PropTypes.number.isRequired,
     }).isRequired,
     startDest: PropTypes.string.isRequired,
     endDest: PropTypes.string.isRequired,
+    complete: PropTypes.bool,
   }).isRequired,
+  driver: PropTypes.bool,
+};
+RideItem.defaultProps = {
+  driver: false,
 };

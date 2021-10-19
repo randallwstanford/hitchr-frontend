@@ -2,3 +2,11 @@
   display: flex;
   flex-direction: column;
 }
+#PayMethodList a{
+  background-color: var(--dark);
+  color: var(--med);
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+}

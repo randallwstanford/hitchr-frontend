@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RideItem from '../../../components/RideItem/RideItem';
 
+import './UpcomingRides.css';
+
 const UpcomingRides = ({ rides }) => (
-  <div>
-    <h2>Upcoming Trips</h2>
+  <div id="UpcomingRides">
+    <h2>Upcoming Rides</h2>
     {
       rides && rides.length
-        ? rides.map((ride) => <RideItem ride={ride} key={ride.rideId} />)
+        ? rides.map((ride) => <RideItem ride={ride} key={ride.rideId} driver={true} />)
         : <span>You have no upcoming rides</span>
     }
   </div>
