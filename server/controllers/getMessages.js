@@ -7,5 +7,12 @@ SELECT array(
     'recipent_id', recipentId,
     'timestamp', timestamp
   )
-  FROM FROM messages WHERE recipent_id = $1 AND sender_id = $2 UNION ALL SELECT * FROM messages WHERE recipent_id = $2 AND sender_id = $1;
+  FROM messages 
+  WHERE recipent_id = $1 
+  AND sender_id = $2 
+  UNION ALL 
+  SELECT * 
+  FROM messages 
+  WHERE recipent_id = $2 
+  AND sender_id = $1;
 )`;
