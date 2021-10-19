@@ -9,7 +9,7 @@ jest.mock('axios'); // this happens automatically with automocking
 const axios = require('axios');
 
 // Mock Functions
-axios.post.mockImplementation((url, data) => ({ url, data }));
+axios.post.mockImplementation((url, data) => new Promise((resolve) => resolve({ url, data })));
 
 describe('postRide', () => {
   it('Should send data in the correct format', () => {

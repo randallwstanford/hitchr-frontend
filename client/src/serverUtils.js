@@ -1,6 +1,9 @@
+import camelcaseKeys from 'camelcase-keys';
+import rideList from './dummyData/rideList';
+
 const axios = require('axios');
 
-const baseUrl = 'http://localhost:3000/api';
+const baseUrl = `${process.env.API_URL}/api`;
 
 export default {
   ride: {
@@ -25,6 +28,24 @@ export default {
       axios.get(`${baseUrl}/user/${userId}`)
         .then(({ data }) => resolve(data))
         .catch(reject);
+    }),
+    getRides: (userId) => new Promise((resolve, reject) => {
+      if (process.env.API_URL) {
+        axios.get(`/user/${userId}/rides`)
+          .then(({ data }) => resolve(data))
+          .catch(reject);
+      } else {
+        resolve(camelcaseKeys(rideList.body.rides));
+      }
+    }),
+    completeRide: (rideData) => new Promise((resolve, reject) => {
+      if (process.env.API_URL) {
+        axios.patch(`/user/${rideData.rideId}/complete`, rideData)
+          .then(({ data }) => resolve(data))
+          .catch(reject);
+      } else {
+        resolve();
+      }
     }),
   },
   messages: {

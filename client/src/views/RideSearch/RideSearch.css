@@ -1,7 +1,35 @@
+#RideSearch{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#RideSearch h1{
+  color: var(--dark);
+  border-bottom: 0.2rem solid var(--dark);
+  margin-bottom: 1rem;
+  width: 100%;
+}
 #ride-search-form{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  background-color: var(--med);
+  width: fit-content;
+  padding: 1rem;
+}
+#RideSearch input{
+  margin-bottom: 1rem;
+  width: 100%;
 }
 #RideSearch button{
   width: fit-content;
+}
+#create-ride-plug{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--med);
+  padding: 1rem;
+  font-weight: 300;
 }

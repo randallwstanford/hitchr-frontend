@@ -1,0 +1,13 @@
+#RideList{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--med);
+  padding: 1rem;
+}
+#no-rides{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 300;
+}

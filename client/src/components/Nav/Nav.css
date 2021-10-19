@@ -2,13 +2,30 @@
   position: sticky;
   display: flex;
   justify-content: center;
+  align-items: center;
   top: 0;
   width: 100%;
   padding: 1rem;
-  margin-bottom: 1rem;
-  border-bottom: 0.1rem solid black;
+  margin-bottom: 2rem;
+  background-color: var(--med);
+  z-index: 5;
+}
+#brand{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--dark);
+  font-size: 1.2rem;
 }
 #navRight{
   position: absolute;
   right: 1rem;
+}
+#Nav a{
+  color: var(--dark);
+  text-decoration: none;
+}
+#logo{
+  font-size: 3rem;
+  font-weight: bold;
 }

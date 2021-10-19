@@ -1,0 +1,4 @@
+#PayMethodList{
+  display: flex;
+  flex-direction: column;
+}
