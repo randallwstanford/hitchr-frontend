@@ -9,7 +9,7 @@ import PayMethod from '../PayMethod/PayMethod';
 const PayMethodList = ({ methods }) => (
   <div id="PayMethodList" data-testid="PayMethodList">
     {
-      methods.length
+      methods && methods.length
         ? methods.map((method) => <PayMethod method={method} key={`payMethod-${method.url}`} />)
         : null
     }

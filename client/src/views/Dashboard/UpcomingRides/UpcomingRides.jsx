@@ -6,7 +6,7 @@ const UpcomingRides = ({ rides }) => (
   <div>
     <h2>Upcoming Trips</h2>
     {
-      rides.length
+      rides && rides.length
         ? rides.map((ride) => <RideItem ride={ride} key={ride.rideId} />)
         : <span>You have no upcoming rides</span>
     }
