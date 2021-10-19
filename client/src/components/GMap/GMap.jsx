@@ -8,7 +8,6 @@ import './GMap.css';
 import GMapKey from './gMapKey';
 
 const GMap = ({ start, end }) => {
-  console.log(GMapKey);
   function initMap() {
     return new Promise((resolve) => {
       const loader = new Loader({
@@ -47,7 +46,9 @@ const GMap = ({ start, end }) => {
     });
   }
   useEffect(() => {
-    initMap();
+    if (process.env.NODE_ENV !== 'test') {
+      initMap();
+    }
   }, [start, end]);
   return (<div id="map" />);
 };
