@@ -8,12 +8,18 @@ import RideList from './RideList';
 
 // Dummy Data
 import rideList from '../../dummyData/rideList';
+import userInfo from '../../dummyData/userInfo';
+import UserContext from '../../contexts/UserContext';
 
 const rides = camelcaseKeys(rideList.body.rides, { deep: true });
 
 describe('RideList', () => {
   beforeEach(() => {
-    render(<RideList rides={rides} />);
+    render(
+      <UserContext.Provider value={camelcaseKeys(userInfo, { deep: true })}>
+        <RideList rides={rides} />
+      </UserContext.Provider>,
+    );
   });
   describe('with rides', () => {
     it('should render without crashing', () => {});

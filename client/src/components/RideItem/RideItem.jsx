@@ -1,27 +1,40 @@
 // React
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 // Stylesheet
 import './RideItem.css';
+import UserContext from '../../contexts/UserContext';
 
 const RideItem = ({ ride }) => {
+  const { userId } = useContext(UserContext);
   const {
-    rideId, driver, startDest, endDest, complete,
+    rideId, driver, startDest, endDest, completed, riders,
   } = ride;
+  const isDriver = driver.id === userId;
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
-      <a href={`/users/${driver.driverId}`}>{driver.username}</a>
+      <a href={`/user/${driver.id}`}>{driver.username}</a>
+      {
+        riders && riders.length
+          ? <span>{`+${riders.length}`}</span>
+          : <span>+0</span>
+      }
       <span>{startDest}</span>
       <span>{endDest}</span>
       {
-        !driver
+        completed
+          ? <span>{new Date(completed).toDateString()}</span>
+          : null
+      }
+      {
+        !isDriver && !completed
           ? <button type="button">Join</button>
           : null
       }
       {
-        driver && !complete
-          ? <button type="button">Complete</button>
+        isDriver && !completed
+          ? <button className="complete-button" type="button">Mark As Complete</button>
           : null
       }
     </div>
@@ -35,11 +48,12 @@ RideItem.propTypes = {
     rideId: PropTypes.number.isRequired,
     driver: PropTypes.shape({
       username: PropTypes.string.isRequired,
-      driverId: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
     }).isRequired,
     startDest: PropTypes.string.isRequired,
     endDest: PropTypes.string.isRequired,
-    complete: PropTypes.bool,
+    completed: PropTypes.string,
+    riders: PropTypes.arrayOf(PropTypes.shape),
   }).isRequired,
   driver: PropTypes.bool,
 };

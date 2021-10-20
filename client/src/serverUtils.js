@@ -9,7 +9,7 @@ const baseUrl = `${process.env.API_URL}/api`;
 export default {
   ride: {
     postRide: (formData) => new Promise((resolve, reject) => {
-      axios.post(`${baseUrl}/ride`, formData)
+      axios.post('http://localhost:5000/api/rides', formData)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
