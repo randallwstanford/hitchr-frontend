@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PastTrips = () => (
+const CompletedRides = () => (
   <div>
     {/* Mapped Elements */}
     <span>Start</span>
@@ -10,4 +10,4 @@ const PastTrips = () => (
   </div>
 );
 
-export default PastTrips;
+export default CompletedRides;

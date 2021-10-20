@@ -1,12 +1,12 @@
 .RideItem{
-  background-color: var(--med);
+  width: 45rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: hsla(0,0%,100%,0.5);
   color: var(--dark);
   margin-bottom: 1rem;
   padding: 1rem;
-  border: 0.1rem solid var(--dark);
-}
-.RideItem span{
-  margin: 0 2rem;
 }
 .RideItem a{
   background-color: var(--dark);
@@ -18,4 +18,18 @@
   font-size: 1rem;
   background-color: var(--dark);
   color: var(--med);
+  padding: 0.25rem 0.5rem;
+  margin: 0 0.25rem;
+}
+.check{
+  fill: var(--dark);
+}
+.RideItem .checkButton{
+  background-color: transparent;
+  fill: var(--dark);
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.complete-button{
+  width: min-content;
 }

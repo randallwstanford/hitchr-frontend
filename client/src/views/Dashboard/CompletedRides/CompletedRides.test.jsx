@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import PastTrips from './PastTrips';
+import CompletedRides from './CompletedRides';
 
 it('should render without crashing', () => {
-  render(<PastTrips />);
+  render(<CompletedRides />);
 });

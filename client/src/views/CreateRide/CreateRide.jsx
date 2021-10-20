@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import './CreateRide.css';
 import GMap from '../../components/GMap/GMap';
 
+import serverUtils from '../../serverUtils';
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 function CreateRide() {
@@ -18,10 +19,18 @@ function CreateRide() {
     const endInput = document.getElementById('input-end-loc').value;
     setEnd(endInput);
   }
-  function handleSubmit() {}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const submitBody = {
+      driverId: 6, startDest: 7, endDest: 8, availableSeats: 2, completed: '2021-05-01 11:15:11', price: 110,
+    };
+    serverUtils.ride.postRide(submitBody)
+      .then(() => { console.log('post ride successfully'); })
+      .catch((err) => console.log(err));
+  };
   return (
     <div id="CreateRide">
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="input-start-loc">
           Starting Location:
           <input id="input-start-loc" onBlur={handleStartInput} />
@@ -38,7 +47,7 @@ function CreateRide() {
           Available Seats:
           <input id="input-seats" type="number" min="0" max="50" />
         </label>
-        <button type="button" onClick={handleSubmit}>Create Ride</button>
+        <button type="submit">Create Ride</button>
       </form>
       <GMap start={start} end={end} />
     </div>
