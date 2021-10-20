@@ -4,7 +4,13 @@ import { render } from '@testing-library/react';
 import UpcomingRides from './UpcomingRides';
 
 import rideList from '../../../dummyData/rideList';
+import userInfo from '../../../dummyData/userInfo';
+import UserContext from '../../../contexts/UserContext';
 
 it('should render without crashing', () => {
-  render(<UpcomingRides rides={camelcaseKeys(rideList.body.rides)} />);
+  render(
+    <UserContext.Provider value={camelcaseKeys(userInfo, { deep: true })}>
+      <UpcomingRides rides={camelcaseKeys(rideList.body.rides)} />
+    </UserContext.Provider>,
+  );
 });
