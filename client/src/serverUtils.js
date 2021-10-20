@@ -3,7 +3,7 @@ import rideList from './dummyData/rideList';
 
 const axios = require('axios');
 
-const baseUrl = `${process.env.API_URL}/api`;
+const baseUrl = process.env.API_URL ? `${process.env.API_URL}/api` : 'http://127.0.0.1:3000/api';
 
 export default {
   ride: {
