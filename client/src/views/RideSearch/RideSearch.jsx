@@ -13,7 +13,7 @@ const RideSearch = () => {
     setSearched(true);
     const start = document.getElementById('input-start-loc').value;
     const end = document.getElementById('input-end-loc').value;
-    serverUtils.searchRide(start, end).then((results) => setRideResults(results));
+    serverUtils.ride.searchRide(start, end).then((results) => setRideResults(results));
     setRideResults([]);
   }
   return (
