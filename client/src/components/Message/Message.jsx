@@ -15,7 +15,9 @@ const Message = ({ message }) => {
       { message.username }
       :
       &nbsp;
-      {message.text}
+      <span data-testid="message-test">
+        {message.text}
+      </span>
       &nbsp;
       Date:
       &nbsp;
