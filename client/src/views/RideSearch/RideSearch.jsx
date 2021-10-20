@@ -1,14 +1,19 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import * as camelcaseKeys from 'camelcase-keys';
 import RideList from '../../components/RideList/RideList';
 import serverUtils from '../../serverUtils';
+
+import rideList from '../../dummyData/rideList';
 
 // Stylesheet
 import './RideSearch.css';
 
 const RideSearch = () => {
-  const [rideResults, setRideResults] = useState([]);
-  const [searched, setSearched] = useState(false);
+  const [rideResults, setRideResults] = useState(
+    camelcaseKeys(rideList.body.rides, { deep: true }),
+  );
+  const [searched, setSearched] = useState(true);
   function handleSearch() {
     setSearched(true);
     const start = document.getElementById('input-start-loc').value;
