@@ -32,7 +32,7 @@ describe('user', () => {
       rides = await serverUtils.user.getRides(3);
     });
     it('should return an array', () => {
-      expect(Array.isArray(rides).toBe(true));
+      expect(Array.isArray(rides)).toBe(true);
     });
   });
 });
