@@ -14,14 +14,11 @@ const Message = ({ message }) => {
     <div className="message">
       { message.username }
       :
-      &nbsp;
-      <span data-testid="message-test">
-        {message.text}
-      </span>
-      &nbsp;
-      Date:
-      &nbsp;
-      {formatDate(message.timestamp)}
+      <div data-testid="message-test" className="message-text">{message.text}</div>
+      <div>
+        Date: &nbsp;
+        {formatDate(message.timestamp)}
+      </div>
     </div>
   );
 };
