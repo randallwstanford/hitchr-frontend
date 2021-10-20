@@ -2,14 +2,12 @@ import axios from 'axios';
 import camelcaseKeys from 'camelcase-keys';
 import rideList from './dummyData/rideList';
 
-// const axios = require('axios');
-
 const baseUrl = `${process.env.API_URL}/api`;
 
 export default {
   ride: {
     postRide: (formData) => new Promise((resolve, reject) => {
-      axios.post('http://localhost:5000/api/rides', formData)
+      axios.post(`${baseUrl}/ride`, formData)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
