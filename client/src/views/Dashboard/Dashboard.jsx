@@ -16,7 +16,6 @@ const Dashboard = () => {
   function fetchRides() {
     serverUtils.user.getRides(sessionId)
       .then((userRides) => {
-        console.log(userRides);
         // setRides(userRides);
       });
   }

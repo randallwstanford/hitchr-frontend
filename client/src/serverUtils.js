@@ -31,9 +31,11 @@ export default {
     }),
     getRides: (userId) => new Promise((resolve, reject) => {
       if (process.env.API_URL) {
-        axios.get(`/user/${userId}/rides`)
-          .then(({ data }) => resolve(data))
-          .catch(reject);
+        axios.get(`${baseUrl}/user/${userId}/rides`)
+          .then(({ data }) => {
+            resolve(data);
+          })
+          .catch((err) => reject(err));
       } else {
         resolve(camelcaseKeys(rideList.body.rides, { deep: true }));
       }
