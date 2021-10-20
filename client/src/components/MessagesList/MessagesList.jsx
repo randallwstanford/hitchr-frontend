@@ -12,14 +12,14 @@ import './MessagesList.css';
 import Message from '../Message/Message';
 
 const MessagesList = ({ messages }) => {
-  const { userId } = useParams();
   let recipientId = 0;
-
+  const { userId } = useParams();
   const [allMessages, setMessages] = useState([messages]);
 
   useEffect(() => {
     setMessages(messages);
   }, []);
+
   allMessages.forEach((message) => {
     if (message.senderId !== userId) recipientId = message.senderId;
   });
@@ -27,7 +27,11 @@ const MessagesList = ({ messages }) => {
   const newMessage = (e) => {
     e.preventDefault();
     const newMessageToPost = e.target.newMessage.value;
-    const formData = { text: newMessageToPost, senderId: parseInt(userId, 10), recipientId };
+    const formData = {
+      text: newMessageToPost,
+      senderId: parseInt(userId, 10),
+      recipientId,
+    };
     serverUtils.messages.postMessage(formData, parseInt(userId, 10), recipientId);
   };
 
@@ -40,7 +44,7 @@ const MessagesList = ({ messages }) => {
       }
       <form onSubmit={newMessage}>
         <input name="newMessage" placeholder="Enter Message Here" />
-        <button type="button">Post Message</button>
+        <button type="submit">Post Message</button>
       </form>
     </div>
   );
@@ -49,6 +53,5 @@ const MessagesList = ({ messages }) => {
 export default MessagesList;
 
 MessagesList.propTypes = {
-  // messages: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  messages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  messages: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
