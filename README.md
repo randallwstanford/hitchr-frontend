@@ -60,6 +60,16 @@ Steps for getting started as a developer on this repo:
 
 - ```npm run dev-build```
     - bundles the contents of the ```src/``` directory (also transpiling JavaScript as needed for browser consumption) into bundled ```.js``` and ```.css``` files which are linked into the ```index.html``` page, then __watches for changes and re-bundles on each file change.__
+    - builds the app to **make API requests to localhost:5000**
+- ```npm run dev-build-island```
+    - bundles the contents of the ```src/``` directory (also transpiling JavaScript as needed for browser consumption) into bundled ```.js``` and ```.css``` files which are linked into the ```index.html``` page, then __watches for changes and re-bundles on each file change.__
+    - builds the app with **no specified API URL**, which allows to test with dummy data instead of the API, e.g:
+    ``` javascript
+      completeRide: (rideData) => new Promise((resolve, reject) => {
+      if (process.env.API_URL) {
+        axios.patch(`/user/${rideData.rideId}/complete`, rideData)
+      . . .
+  ```
 - ```npm run server```
     - starts a development server which serves the client app from localhost - by default on ```localhost:3000``` - then __watches for changes and restarts the server with updated content on each file change__.
 - ```npm run build```
