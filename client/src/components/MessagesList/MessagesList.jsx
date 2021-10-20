@@ -7,7 +7,7 @@ import './MessagesList.css';
 import Message from '../Message/Message';
 
 const MessagesList = ({ messages }) => (
-  <div data-testid="MessagesList">
+  <div data-testid="MessagesList" className="messages-container">
     {
       messages.length
         ? messages.map((message) => <Message message={message} key={`message-${message.messageId}`} />)
