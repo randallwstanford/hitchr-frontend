@@ -1,7 +1,8 @@
+import axios from 'axios';
 import camelcaseKeys from 'camelcase-keys';
 import rideList from './dummyData/rideList';
 
-const axios = require('axios');
+// const axios = require('axios');
 
 const baseUrl = `${process.env.API_URL}/api`;
 
@@ -13,7 +14,7 @@ export default {
         .catch(reject);
     }),
     searchRide: (start, end) => new Promise((resolve, reject) => {
-      axios.get(`${baseUrl}/ride?start=${start}&end=${end}`)
+      axios.get(`${baseUrl}/rides?start=${start}&end=${end}`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
