@@ -14,7 +14,7 @@ const Message = ({ message }) => {
     <div className="message">
       { message.username }
       :
-      <div data-testid="message-test" className="message-text">{message.text}</div>
+      <p data-testid="message-test" className="message-text">{message.text}</p>
       <div>
         Date: &nbsp;
         {formatDate(message.timestamp)}
