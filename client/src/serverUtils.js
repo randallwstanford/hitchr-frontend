@@ -46,9 +46,9 @@ export default {
         resolve(camelcaseKeys(rideList.body.rides, { deep: true }));
       }
     }),
-    completeRide: (rideData) => new Promise((resolve, reject) => {
+    completeRide: (rideId) => new Promise((resolve, reject) => {
       if (process.env.API_URL) {
-        axios.patch(`/user/${rideData.rideId}/complete`, rideData)
+        axios.patch(`${baseUrl}/rides/${rideId}/complete`)
           .then(({ data }) => resolve(data))
           .catch(reject);
       } else {

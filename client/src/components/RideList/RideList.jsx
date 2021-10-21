@@ -26,7 +26,7 @@ RideList.propTypes = {
       }).isRequired,
     }),
   ).isRequired,
-  noList: PropTypes.shape,
+  noList: PropTypes.element,
 };
 RideList.defaultProps = {
   noList: null,
