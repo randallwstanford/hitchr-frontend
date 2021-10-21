@@ -3,7 +3,7 @@ import rideList from './dummyData/rideList';
 
 const axios = require('axios');
 
-const baseUrl = `${process.env.API_URL}/api`;
+const baseUrl = process.env.API_URL ? `${process.env.API_URL}/api` : 'http://127.0.0.1:3000/api';
 
 export default {
   ride: {
@@ -31,9 +31,11 @@ export default {
     }),
     getRides: (userId) => new Promise((resolve, reject) => {
       if (process.env.API_URL) {
-        axios.get(`/user/${userId}/rides`)
-          .then(({ data }) => resolve(data))
-          .catch(reject);
+        axios.get(`${baseUrl}/user/${userId}/rides`)
+          .then(({ data }) => {
+            resolve(data);
+          })
+          .catch((err) => reject(err));
       } else {
         resolve(camelcaseKeys(rideList.body.rides, { deep: true }));
       }

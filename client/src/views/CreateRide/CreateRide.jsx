@@ -24,7 +24,7 @@ const getDateformat = (dateOb) => {
 function CreateRide() {
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
-  const { username, isdriver } = useContext(UserContext);
+  const { username, isDriver } = useContext(UserContext);
   function handleStartInput() {
     const startInput = document.getElementById('input-start-loc').value;
     setStart(startInput);
@@ -35,7 +35,7 @@ function CreateRide() {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!isdriver) {
+    if (!isDriver) {
       return;
     }
     // todo: get driverId

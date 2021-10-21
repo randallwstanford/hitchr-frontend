@@ -1,21 +1,21 @@
 export default {
-  user_id: 12345,
-  username: 'Opal647',
-  rating: 4.5,
-  sessionId: '122gjsadlfkj8ldksajf',
+  id: 40,
+  username: 'Kizzy786',
+  password: 'q23564k08xs9y1um7rlnvptzow',
   payment_methods: [
     {
-      provider: 'Venmo',
-      url: 'https://venmo.com/MrDriver',
-    },
-    {
       provider: 'PayPal',
-      url: 'https://paypal.com/MrDriver',
+      url: 'https://paypal.com/Kizzy78',
     },
     {
-      provider: 'Cash App',
-      url: 'https://cashapp.com/MrDriver',
+      provider: 'venmo',
+      url: 'https://venmo.com/Kizzy78',
     },
   ],
-  isdriver: true,
+  session_id: '1234',
+  average_rider_rating: '0',
+  total_rider_ratings: 0,
+  is_driver: true,
+  average_driver_rating: '0.427',
+  total_driver_ratings: 36,
 };

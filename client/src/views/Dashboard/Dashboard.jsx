@@ -16,7 +16,7 @@ const Dashboard = () => {
   function fetchRides() {
     serverUtils.user.getRides(sessionId)
       .then((userRides) => {
-        setRides(userRides);
+        // setRides(userRides);
       });
   }
   const completeRide = () => {
@@ -25,6 +25,7 @@ const Dashboard = () => {
       .then(() => {})
       .catch((err) => console.log(err));
   };
+  console.log(process.env.API_URL);
   useEffect(() => {
     fetchRides();
   }, []);
