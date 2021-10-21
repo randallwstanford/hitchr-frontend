@@ -40,12 +40,12 @@ function CreateRide() {
     }
     // todo: get driverId
     const submitBody = { // convert format in server side
-      usernametodriverId: username,
+      usernameToDriverId: username,
       startDestName: event.target[0].value, // 0
       endDestName: event.target[1].value, // 1
-      availableSeats: event.target[3].value, // 3
+      availableSeats: parseInt(event.target[3].value, 10), // 3
       completed: getDateformat(new Date()),
-      price: event.target[2].value, // 2
+      price: parseInt(event.target[2].value, 10), // 2
     };
     serverUtils.ride.postRide(submitBody)
       .then(() => { console.log('post ride successfully'); })
