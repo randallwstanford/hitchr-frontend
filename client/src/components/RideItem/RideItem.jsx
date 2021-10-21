@@ -10,7 +10,7 @@ import serverUtils from '../../serverUtils';
 // Stylesheet
 import './RideItem.css';
 
-const RideItem = ({ ride, joinFunction }) => {
+const RideItem = ({ ride }) => {
   const user = useContext(UserContext);
   const updateContext = useContext(UpdateContext);
   let updateFunction;
@@ -21,17 +21,22 @@ const RideItem = ({ ride, joinFunction }) => {
     rideId, driver, startDest, endDest, completed, riders,
   } = ride;
   const isDriver = driver.id === user.id;
-<<<<<<< HEAD
+  const isRider = riders && riders.includes(user.id);
   function handleJoin() {
-    if (joinFunction) {
-      joinFunction();
-=======
+    serverUtils.ride.addRider({ rideId, userId: user.id })
+      .then(() => {
+        if (updateFunction) {
+          updateFunction();
+        }
+      });
+  }
   function handleComplete() {
-    serverUtils.user.completeRide(rideId);
-    if (updateFunction) {
-      updateFunction();
->>>>>>> main
-    }
+    serverUtils.user.completeRide(rideId)
+      .then(() => {
+        if (updateFunction) {
+          updateFunction();
+        }
+      });
   }
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
@@ -49,8 +54,13 @@ const RideItem = ({ ride, joinFunction }) => {
           : null
       }
       {
-        !isDriver && !completed
+        !isDriver && !isRider && !completed
           ? <button type="button" onClick={handleJoin}>Join</button>
+          : null
+      }
+      {
+        isRider && !completed
+          ? <button type="button">Joined</button>
           : null
       }
       {
