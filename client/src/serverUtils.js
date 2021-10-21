@@ -2,7 +2,7 @@ import axios from 'axios';
 import camelcaseKeys from 'camelcase-keys';
 import rideList from './dummyData/rideList';
 
-const baseUrl = `${process.env.API_URL}/api`;
+const baseUrl = process.env.API_URL ? `${process.env.API_URL}/api` : 'http://localhost:3000/api';
 
 export default {
   destinations: {
@@ -17,9 +17,9 @@ export default {
         .catch(reject);
     }),
   },
-  ride: {
+  rides: {
     postRide: (formData) => new Promise((resolve, reject) => {
-      axios.post(`${baseUrl}/ride`, formData)
+      axios.post(`${baseUrl}/rides`, formData)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
@@ -29,12 +29,12 @@ export default {
         .catch(reject);
     }),
     addRider: (rideId) => new Promise((resolve, reject) => {
-      axios.patch(`${baseUrl}/ride/${rideId}`)
+      axios.patch(`${baseUrl}/rides/${rideId}`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
     completeRide: (rideId) => new Promise((resolve, reject) => {
-      axios.patch(`${baseUrl}/ride/${rideId}/complete`)
+      axios.patch(`${baseUrl}/rides/${rideId}/complete`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),

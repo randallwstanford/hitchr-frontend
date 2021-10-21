@@ -24,7 +24,7 @@ const RideSearch = () => {
     const startId = document.querySelector(`#start-loc-list option[value="${start}"]`).dataset.value;
     const end = document.getElementById('input-end-loc').value;
     const endId = document.querySelector(`#end-loc-list option[value="${end}"]`).dataset.value;
-    serverUtils.ride.searchRide(startId, endId).then((results) => setRideResults(results));
+    serverUtils.rides.searchRide(startId, endId).then((results) => setRideResults(results));
     setRideResults([]);
   }
 
@@ -55,7 +55,7 @@ const RideSearch = () => {
         </label>
         <label htmlFor="input-start-loc">
           DROPOFF
-          <input id="input-end-loc" list="end-loc-list" />
+          <input id="input-end-loc" list="end-loc-list" required />
           <datalist id="end-loc-list" aria-label="Ending destination input">
             {endingDestinations.map((destination) => (
               <option
