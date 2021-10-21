@@ -16,7 +16,7 @@ describe('Message', () => {
   });
   it('should render without crashing', () => {});
   it('should display message text', () => {
-    const messageText = screen.getByTestId('message-test');
+    const messageText = screen.getByText(message.text);
     expect(messageText).toBeTruthy();
   });
 });
