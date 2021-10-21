@@ -52,12 +52,12 @@ export default {
   },
   messages: {
     getMessages: (userId, recipientId) => new Promise((resolve, reject) => {
-      axios.get(`${baseUrl}/messages/${userId}/?recipient=${recipientId}`)
+      axios.get(`${baseUrl}/messages/${userId}/${recipientId}`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
     postMessage: (formData, userId, recipientId) => new Promise((resolve, reject) => {
-      axios.post(`${baseUrl}/messages/${userId}?recipient=${recipientId}`, formData)
+      axios.post(`${baseUrl}/messages/${recipientId}/${userId}`, formData)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
