@@ -35,10 +35,6 @@ describe('RideList', () => {
       render(<RideList rides={[]} />);
     });
     it('should render without crashing', () => {});
-    it('should render a "Create Trip" button', () => {
-      const create = screen.getByText('Create Trip');
-      expect(create.nodeName).toBe('BUTTON');
-    });
   });
 });
 // TODO: Add review option to completed rides (if other parties mark as completed)

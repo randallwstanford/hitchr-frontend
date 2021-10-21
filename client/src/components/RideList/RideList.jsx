@@ -6,19 +6,12 @@ import PropTypes from 'prop-types';
 import './RideList.css';
 import RideItem from '../RideItem/RideItem';
 
-const RideList = ({ rides }) => (
+const RideList = ({ rides, noList }) => (
   <div id="RideList">
     {
       rides.length
         ? rides.map((ride) => <RideItem ride={ride} key={ride.rideId} />)
-        : (
-          <div id="no-rides">
-            <p>No rides match your search. Create this ride for others?</p>
-            <a href="/create">
-              <button type="button">Create Trip</button>
-            </a>
-          </div>
-        )
+        : noList
     }
   </div>
 );
@@ -33,8 +26,8 @@ RideList.propTypes = {
       }).isRequired,
     }),
   ).isRequired,
-  searched: PropTypes.bool,
+  noList: PropTypes.shape,
 };
 RideList.defaultProps = {
-  searched: false,
+  noList: null,
 };
