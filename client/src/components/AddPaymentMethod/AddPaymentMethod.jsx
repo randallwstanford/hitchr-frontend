@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const paymentOptions = [
+  'Select One',
   'PayPal',
   'CashApp',
 ];
@@ -11,7 +12,6 @@ const AddPaymentMethod = (props) => {
   const [url, setUrl] = useState('');
 
   function savePaymentMethod() {
-    console.log(provider, url);
     props.savePaymentMethod(provider, url);
   }
 
@@ -22,14 +22,14 @@ const AddPaymentMethod = (props) => {
 
   return (
     <div className="add-payment-tile">
-      <select>
+      <select onChange={(e) => setProvider(e.target.value)}>
         {paymentOptions.map((option) => (
-          <option key={option} onChange={() => setProvider(option)}>{option}</option>
+          <option key={option} value={option}>{option}</option>
         ))}
       </select>
       <input onChange={changeUrl} />
       <button type="button" onClick={savePaymentMethod}>Save</button>
-    </div>
+    </div >
   );
 };
 
