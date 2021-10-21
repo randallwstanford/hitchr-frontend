@@ -16,19 +16,23 @@ const RideSearch = () => {
   );
   const [searched, setSearched] = useState(true);
   const [startingDestinations, setStartingDestinations] = useState([]);
+  const [endingDestinations, setEndingDestinations] = useState([]);
 
   function handleSearch() {
     setSearched(true);
     const start = document.getElementById('input-start-loc').value;
     const startId = document.querySelector(`#start-loc-list option[value="${start}"]`).dataset.value;
     const end = document.getElementById('input-end-loc').value;
-    serverUtils.ride.searchRide(startId, end).then((results) => setRideResults(results));
+    const endId = document.querySelector(`#end-loc-list option[value="${end}"]`).dataset.value;
+    serverUtils.ride.searchRide(startId, endId).then((results) => setRideResults(results));
     setRideResults([]);
   }
 
   useEffect(() => {
     serverUtils.destinations.getStartingDestinations()
       .then((results) => setStartingDestinations(results));
+    serverUtils.destinations.getEndingDestinations()
+      .then((results) => setEndingDestinations(results));
   }, []);
 
   return (
@@ -37,8 +41,8 @@ const RideSearch = () => {
         <h1>Search For Rideshares</h1>
         <label htmlFor="input-start-loc">
           PICKUP
-          <input list="start-loc-list" id="input-start-loc" />
-          <datalist id="start-loc-list" aria-label="Starting Destination Input">
+          <input id="input-start-loc" list="start-loc-list" />
+          <datalist id="start-loc-list" aria-label="Starting destination input">
             {startingDestinations.map((destination) => (
               <option
                 key={destination.id}
@@ -51,7 +55,17 @@ const RideSearch = () => {
         </label>
         <label htmlFor="input-start-loc">
           DROPOFF
-          <input id="input-end-loc" />
+          <input id="input-end-loc" list="end-loc-list" />
+          <datalist id="end-loc-list" aria-label="Ending destination input">
+            {endingDestinations.map((destination) => (
+              <option
+                key={destination.id}
+                data-value={destination.id}
+                value={destination.name}
+                aria-label={`Ending destination of ${destination.name}`}
+              />
+            ))}
+          </datalist>
         </label>
         <button type="button" onClick={handleSearch}>Search Rides</button>
       </form>

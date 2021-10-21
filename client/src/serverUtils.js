@@ -11,6 +11,11 @@ export default {
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
+    getEndingDestinations: () => new Promise((resolve, reject) => {
+      axios.get(`${baseUrl}/destinations/end`)
+        .then(({ data }) => resolve(data))
+        .catch(reject);
+    }),
   },
   ride: {
     postRide: (formData) => new Promise((resolve, reject) => {
