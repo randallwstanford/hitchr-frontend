@@ -7,16 +7,27 @@ import serverUtils from '../../serverUtils';
 // Stylesheet
 import './MessagesList.css';
 import Message from '../Message/Message';
+import messages from '../../dummyData/messagesList.js';
 
-const MessagesList = () => {
+const MessagesList = ({ messages }) => {
   const { id } = useContext(UserContext);
-  const userId = parseInt(useParams().userId, 10);
+
+  let userId = 10;
+  if (process.env.NODE_ENV !== 'test') {
+    userId = parseInt(useParams().userId, 10);
+  }
+
   const [allMessages, setMessages] = useState([]);
 
   const getData = () => serverUtils.messages.getMessages(userId, id).then((data) => data);
 
   useEffect(async () => {
-    setMessages(await getData());
+    if (process.env.NODE_ENV !== 'test') {
+      setMessages(await getData());
+    } else {
+      setMessages(messages)
+    }
+
   }, []);
 
   // setInterval(async () => {
