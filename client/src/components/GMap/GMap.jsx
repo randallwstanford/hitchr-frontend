@@ -39,6 +39,7 @@ const GMap = ({ start, end }) => {
             .then((response) => {
               directionsRenderer.setDirections(response);
             })
+            // eslint-disable-next-line no-alert
             .catch((e) => window.alert(e));
         }
         resolve();

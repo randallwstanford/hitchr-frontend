@@ -15,15 +15,15 @@ const axios = require('axios');
 
 describe('postRide', () => {
   it('Should send data in the correct format', () => {
-    serverUtils.ride.postRide(postRide.client);
+    serverUtils.rides.postRide(postRide.client);
   });
 });
 
-describe('getUser', () => {});
+describe('getUser', () => { });
 
-describe('getMessages', () => {});
+describe('getMessages', () => { });
 
-describe('getMessages', () => {});
+describe('getMessages', () => { });
 
 describe('user', () => {
   describe('getRides', () => {
