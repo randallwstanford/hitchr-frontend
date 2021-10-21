@@ -1,16 +1,30 @@
 // React
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 // Stylesheet
 import './CreateRide.css';
 import GMap from '../../components/GMap/GMap';
 
 import serverUtils from '../../serverUtils';
+
+import UserContext from '../../contexts/UserContext';
 /* eslint-disable jsx-a11y/label-has-associated-control */
+
+const getDateformat = (dateOb) => {
+  const date = (`0${dateOb.getDate()}`).slice(-2);
+  const month = (`0${dateOb.getMonth() + 1}`).slice(-2);
+  const year = dateOb.getFullYear();
+  const hours = dateOb.getHours();
+  const minutes = dateOb.getMinutes();
+  const seconds = dateOb.getSeconds();
+  const result = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+  return result;
+};
 
 function CreateRide() {
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
+  const { username, isDriver } = useContext(UserContext);
   function handleStartInput() {
     const startInput = document.getElementById('input-start-loc').value;
     setStart(startInput);
@@ -21,8 +35,17 @@ function CreateRide() {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    const submitBody = {
-      driverId: 6, startDest: 7, endDest: 8, availableSeats: 2, completed: '2021-05-01 11:15:11', price: 110,
+    if (!isDriver) {
+      return;
+    }
+    // todo: get driverId
+    const submitBody = { // convert format in server side
+      usernametodriverId: username,
+      startDestName: event.target[0].value, // 0
+      endDestName: event.target[1].value, // 1
+      availableSeats: event.target[3].value, // 3
+      completed: getDateformat(new Date()),
+      price: event.target[2].value, // 2
     };
     serverUtils.ride.postRide(submitBody)
       .then(() => { console.log('post ride successfully'); })
