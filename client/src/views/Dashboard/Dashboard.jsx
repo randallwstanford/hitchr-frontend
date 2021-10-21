@@ -1,23 +1,27 @@
 import React, { useContext, useState, useEffect } from 'react';
 
 // Sub-Components
-import UpcomingRides from './UpcomingRides/UpcomingRides';
-
-// Context
-import UserContext from '../../contexts/UserContext';
+import RideList from '../../components/RideList/RideList';
 import PayMethodList from '../../components/PayMethodList/PayMethodList';
+import NoComingRides from './NoComingRides';
+import NoPastRides from './NoPastRides';
 
-import './Dashboard.css';
+// Context & Utilities
+import UserContext from '../../contexts/UserContext';
 import serverUtils from '../../serverUtils';
 
+// Style Sheet
+import './Dashboard.css';
+
 const Dashboard = () => {
-  const { username, sessionId, paymentMethods } = useContext(UserContext);
+  const {
+    id, username, paymentMethods,
+  } = useContext(UserContext);
   const [rides, setRides] = useState([]);
   function fetchRides() {
-    serverUtils.user.getRides(sessionId)
+    serverUtils.user.getRides(id)
       .then((userRides) => {
-        console.log(userRides);
-        // setRides(userRides);
+        setRides(userRides);
       });
   }
   const completeRide = () => {
@@ -26,7 +30,6 @@ const Dashboard = () => {
       .then(() => {})
       .catch((err) => console.log(err));
   };
-  console.log(process.env.API_URL);
   useEffect(() => {
     fetchRides();
   }, []);
@@ -36,7 +39,20 @@ const Dashboard = () => {
         <span>{ username }</span>
         <PayMethodList methods={paymentMethods} />
       </div>
-      <UpcomingRides rides={rides} completeRide={completeRide} />
+      <div id="user-rides">
+        <div id="UpcomingRides">
+          <h2>Upcoming Rides</h2>
+          <RideList
+            rides={rides.filter((ride) => !ride.completed)}
+            noList={<NoComingRides />}
+            completeRide={completeRide()}
+          />
+        </div>
+        <div id="UpcomingRides">
+          <h2>Past Rides</h2>
+          <RideList rides={rides.filter((ride) => ride.completed)} noList={<NoPastRides />} />
+        </div>
+      </div>
     </div>
   );
 };

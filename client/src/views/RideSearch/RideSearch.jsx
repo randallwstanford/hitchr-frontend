@@ -4,6 +4,7 @@ import camelcaseKeys from 'camelcase-keys';
 import RideList from '../../components/RideList/RideList';
 import serverUtils from '../../serverUtils';
 
+import NoRides from './NoRides';
 import rideList from '../../dummyData/rideList';
 
 // Stylesheet
@@ -47,7 +48,7 @@ const RideSearch = () => {
         searched
           ? (
             <div id="search-results">
-              <RideList rides={rideResults} />
+              <RideList rides={rideResults} noList={<NoRides />} />
             </div>
           ) : (
             <div id="create-ride-plug">
@@ -61,4 +62,5 @@ const RideSearch = () => {
     </div>
   );
 };
+
 export default RideSearch;
