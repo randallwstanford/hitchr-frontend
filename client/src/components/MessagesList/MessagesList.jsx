@@ -1,46 +1,45 @@
 // React
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-
-// import axios from 'axios';
-import PropTypes from 'prop-types';
-// import UserContext from '../../contexts/UserContext';
+import UserContext from '../../contexts/UserContext';
 import serverUtils from '../../serverUtils';
 
 // Stylesheet
 import './MessagesList.css';
 import Message from '../Message/Message';
 
-const MessagesList = ({ messages }) => {
-  let recipientId = 0;
-  const { userId } = useParams();
-  const [allMessages, setMessages] = useState([messages]);
+const MessagesList = () => {
+  const { id } = useContext(UserContext);
+  const userId = parseInt(useParams().userId, 10);
+  const [allMessages, setMessages] = useState([]);
 
-  useEffect(() => {
-    setMessages(messages);
+  const getData = () => serverUtils.messages.getMessages(userId, id).then((data) => data);
+
+  useEffect(async () => {
+    setMessages(await getData());
   }, []);
 
-  allMessages.forEach((message) => {
-    if (message.senderId !== userId) recipientId = message.senderId;
-  });
+  // setInterval(async () => {
+  //   setMessages(await getData());
+  // }, 5000);
 
   const newMessage = (e) => {
     e.preventDefault();
     const newMessageToPost = e.target.newMessage.value;
     const formData = {
       text: newMessageToPost,
-      senderId: parseInt(userId, 10),
-      recipientId,
+      senderId: userId,
+      recipientId: id,
     };
-    serverUtils.messages.postMessage(formData, parseInt(userId, 10), recipientId);
+    serverUtils.messages.postMessage(formData, userId, id);
   };
 
   return (
     <div data-testid="MessagesList" className="messages-container">
       {
-        messages.length
-          ? allMessages.map((message) => <Message message={message} key={`message-${message.messageId}`} />)
-          : null
+        allMessages.length
+          ? allMessages.map((message) => <Message message={message} key={message.message_id} />)
+          : <div>No messages found!</div>
       }
       <form onSubmit={newMessage}>
         <input name="newMessage" placeholder="Enter Message Here" />
@@ -51,7 +50,3 @@ const MessagesList = ({ messages }) => {
 };
 
 export default MessagesList;
-
-MessagesList.propTypes = {
-  messages: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-};
