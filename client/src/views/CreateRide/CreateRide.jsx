@@ -47,7 +47,7 @@ function CreateRide() {
       completed: getDateformat(new Date()),
       price: event.target[2].value, // 2
     };
-    serverUtils.ride.postRide(submitBody)
+    serverUtils.rides.postRide(submitBody)
       .then(() => { console.log('post ride successfully'); })
       .catch((err) => console.log(err));
   };
