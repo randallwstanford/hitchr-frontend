@@ -20,10 +20,16 @@ const AddPaymentMethod = (props) => {
     setUrl(e.target.value);
   }
 
+  function changeProvider(e) {
+    if (e.target.newProvider !== paymentOptions[0]) {
+      setProvider(e.target.value);
+    }
+  }
+
   return (
     <div className="add-payment-tile">
       <select onChange={(e) => setProvider(e.target.value)}>
-        {paymentOptions.map((option) => (
+        {(provider === '' ? paymentOptions : paymentOptions.slice(1)).map((option) => (
           <option key={option} value={option}>{option}</option>
         ))}
       </select>
