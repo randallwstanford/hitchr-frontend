@@ -6,12 +6,17 @@ import PropTypes from 'prop-types';
 import './RideItem.css';
 import UserContext from '../../contexts/UserContext';
 
-const RideItem = ({ ride }) => {
+const RideItem = ({ ride, joinFunction }) => {
   const user = useContext(UserContext);
   const {
     rideId, driver, startDest, endDest, completed, riders,
   } = ride;
   const isDriver = driver.id === user.id;
+  function handleJoin() {
+    if (joinFunction) {
+      joinFunction();
+    }
+  }
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
       <a href={`/user/${driver.id}`}>{driver.username}</a>
@@ -29,7 +34,7 @@ const RideItem = ({ ride }) => {
       }
       {
         !isDriver && !completed
-          ? <button type="button">Join</button>
+          ? <button type="button" onClick={handleJoin}>Join</button>
           : null
       }
       {
@@ -56,7 +61,9 @@ RideItem.propTypes = {
     riders: PropTypes.arrayOf(PropTypes.shape),
   }).isRequired,
   driver: PropTypes.bool,
+  joinFunction: PropTypes.func,
 };
 RideItem.defaultProps = {
   driver: false,
+  joinFunction: null,
 };
