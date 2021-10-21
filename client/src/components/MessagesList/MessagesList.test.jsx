@@ -16,9 +16,9 @@ const messages = camelcaseKeys(messagesList.body.messages);
 describe('MessagesList', () => {
   beforeEach(() => {
     render(
-      <UserContext.Provider value={camelcaseKeys(userInfo, {deep: true})}>
+      <UserContext.Provider value={camelcaseKeys(userInfo, { deep: true })}>
         <MessagesList messages={messages} />
-      </UserContext.Provider>
+      </UserContext.Provider>,
     );
   });
 
