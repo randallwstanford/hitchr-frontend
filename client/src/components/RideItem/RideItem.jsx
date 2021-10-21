@@ -2,19 +2,35 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
+// Contexts & Utils
+import UserContext from '../../contexts/UserContext';
+import UpdateContext from '../../contexts/UpdateContext';
+import serverUtils from '../../serverUtils';
+
 // Stylesheet
 import './RideItem.css';
-import UserContext from '../../contexts/UserContext';
 
 const RideItem = ({ ride, joinFunction }) => {
   const user = useContext(UserContext);
+  const updateContext = useContext(UpdateContext);
+  let updateFunction;
+  if (updateContext && updateContext.update) {
+    updateFunction = updateContext.update;
+  }
   const {
     rideId, driver, startDest, endDest, completed, riders,
   } = ride;
   const isDriver = driver.id === user.id;
+<<<<<<< HEAD
   function handleJoin() {
     if (joinFunction) {
       joinFunction();
+=======
+  function handleComplete() {
+    serverUtils.user.completeRide(rideId);
+    if (updateFunction) {
+      updateFunction();
+>>>>>>> main
     }
   }
   return (
@@ -39,7 +55,7 @@ const RideItem = ({ ride, joinFunction }) => {
       }
       {
         isDriver && !completed
-          ? <button className="complete-button" type="button">Mark As Complete</button>
+          ? <button className="complete-button" type="button" onClick={handleComplete}>Mark As Complete</button>
           : null
       }
     </div>

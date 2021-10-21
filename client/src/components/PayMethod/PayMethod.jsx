@@ -10,7 +10,11 @@ const PayMethod = ({ method }) => {
     url,
     provider,
   } = method;
-  return <a href={url} target="_blank" rel="noreferrer" data-testid={`payMethod${url}`}>{provider}</a>;
+  return (
+    <div className="payment-method">
+      <a href={url} target="_blank" rel="noreferrer" data-testid={`payMethod${url}`}>{provider}</a>
+    </div>
+  );
 };
 export default PayMethod;
 

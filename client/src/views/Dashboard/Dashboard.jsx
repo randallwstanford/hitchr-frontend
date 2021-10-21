@@ -8,6 +8,7 @@ import NoPastRides from './NoPastRides';
 
 // Context & Utilities
 import UserContext from '../../contexts/UserContext';
+import UpdateContext from '../../contexts/UpdateContext';
 import serverUtils from '../../serverUtils';
 
 // Style Sheet
@@ -35,24 +36,33 @@ const Dashboard = () => {
   }, []);
   return (
     <div id="Dashboard">
-      <div id="user-info">
-        <span>{ username }</span>
-        <PayMethodList methods={paymentMethods} />
-      </div>
-      <div id="user-rides">
-        <div id="UpcomingRides">
-          <h2>Upcoming Rides</h2>
-          <RideList
-            rides={rides.filter((ride) => !ride.completed)}
-            noList={<NoComingRides />}
-            completeRide={completeRide()}
-          />
+      <UpdateContext.Provider value={{ update: fetchRides }}>
+        <div id="user-info">
+          <span>{ username }</span>
+          <PayMethodList methods={paymentMethods} />
         </div>
-        <div id="UpcomingRides">
-          <h2>Past Rides</h2>
-          <RideList rides={rides.filter((ride) => ride.completed)} noList={<NoPastRides />} />
+        <div id="user-rides">
+          <div id="UpcomingRides">
+            <h2>Upcoming Rides</h2>
+            <RideList
+              rides={rides.filter((ride) => !ride.completed)}
+              noList={<NoComingRides />}
+              completeRide={completeRide}
+            />
+          </div>
+          <div id="UpcomingRides">
+            <h2>Past Rides</h2>
+            <RideList
+              rides={
+                rides
+                  .filter((ride) => ride.completed)
+                  .sort((a, b) => (a.rideId > b.rideId ? -1 : 1))
+              }
+              noList={<NoPastRides />}
+            />
+          </div>
         </div>
-      </div>
+      </UpdateContext.Provider>
     </div>
   );
 };
