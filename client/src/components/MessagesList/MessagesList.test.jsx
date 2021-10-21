@@ -16,7 +16,7 @@ describe('MessagesList', () => {
     render(<MessagesList messages={messages} />);
   });
   it('should render without crashing', () => {});
-  xit('should display each messsage', () => {
+  it('should display each messsage', () => {
     messages.forEach((message) => {
       const renderedText = screen.getByText(message.text);
       expect(renderedText).toBeTruthy();
