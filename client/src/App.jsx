@@ -7,7 +7,7 @@ import camelcaseKeys from 'camelcase-keys';
 // Views
 import RideSearch from './views/RideSearch/RideSearch';
 import Dashboard from './views/Dashboard/Dashboard';
-import Auth from './views/Auth/Auth';
+import Login from './views/Login/Login';
 import User from './views/User/User';
 import CreateRide from './views/CreateRide/CreateRide';
 
@@ -36,7 +36,7 @@ const App = () => {
           <UserContext.Provider value={user}>
             <Nav />
             <Route path={['/login', '/signup']}>
-              <Auth />
+              <Login />
             </Route>
             {
               !user || !user.sessionId

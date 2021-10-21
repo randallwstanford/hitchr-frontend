@@ -15,10 +15,18 @@ const Auth = () => {
     <div>
       <h1>Hitchr</h1>
       <form>
-        <input name="username" placeholder="Username" />
-        <input name="password" placeholder="Password" />
+        <label htmlFor="username">
+          Username
+          <input id="username" name="username" placeholder="Johnny123" />
+        </label>
+        <label hintFor="password">
+          Password
+          <input type="password" name="password" />
+        </label>
         {/* ----- Creation Mode ----- */}
-        <input name="paymentMethod" placeholder="Payment Method" />
+        <label>
+          <input name="paymentMethod" placeholder="Payment Method" />
+        </label>
         <input name="serviceName" placeholder="Service Name" />
         {/* ------------------------- */}
         <button type="button" onClick={addPaymentMethod}>Add Payment Method</button>
