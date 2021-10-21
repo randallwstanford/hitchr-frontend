@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import camelcaseKeys from 'camelcase-keys';
 import RideList from '../../components/RideList/RideList';
 import serverUtils from '../../serverUtils';
@@ -14,6 +14,8 @@ const RideSearch = () => {
     camelcaseKeys(rideList.body.rides, { deep: true }),
   );
   const [searched, setSearched] = useState(true);
+  const [startingDestinations, setStartingDestinations] = useState([]);
+
   function handleSearch() {
     setSearched(true);
     const start = document.getElementById('input-start-loc').value;
@@ -21,6 +23,12 @@ const RideSearch = () => {
     serverUtils.ride.searchRide(start, end).then((results) => setRideResults(results));
     setRideResults([]);
   }
+
+  useEffect(() => {
+    serverUtils.destinations.getStartingDestinations()
+      .then((results) => setStartingDestinations(results));
+  }, []);
+
   return (
     <div id="RideSearch">
       <form id="ride-search-form">

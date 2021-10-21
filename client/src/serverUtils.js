@@ -5,6 +5,13 @@ import rideList from './dummyData/rideList';
 const baseUrl = `${process.env.API_URL}/api`;
 
 export default {
+  destinations: {
+    getStartingDestinations: () => new Promise((resolve, reject) => {
+      axios.get(`${baseUrl}/destinations/start`)
+        .then(({ data }) => resolve(data))
+        .catch(reject);
+    }),
+  },
   ride: {
     postRide: (formData) => new Promise((resolve, reject) => {
       axios.post(`${baseUrl}/ride`, formData)
