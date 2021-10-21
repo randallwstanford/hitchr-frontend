@@ -1,29 +1,40 @@
+import axios from 'axios';
 import camelcaseKeys from 'camelcase-keys';
 import rideList from './dummyData/rideList';
 
-const axios = require('axios');
-
-const baseUrl = process.env.API_URL ? `${process.env.API_URL}/api` : 'http://127.0.0.1:3000/api';
+const baseUrl = process.env.API_URL ? `${process.env.API_URL}/api` : 'http://localhost:3000/api';
 
 export default {
-  ride: {
+  destinations: {
+    getStartingDestinations: () => new Promise((resolve, reject) => {
+      axios.get(`${baseUrl}/destinations/start`)
+        .then(({ data }) => resolve(data))
+        .catch(reject);
+    }),
+    getEndingDestinations: () => new Promise((resolve, reject) => {
+      axios.get(`${baseUrl}/destinations/end`)
+        .then(({ data }) => resolve(data))
+        .catch(reject);
+    }),
+  },
+  rides: {
     postRide: (formData) => new Promise((resolve, reject) => {
-      axios.post('http://localhost:5000/api/rides', formData)
+      axios.post(`${baseUrl}/rides`, formData)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
     searchRide: (start, end) => new Promise((resolve, reject) => {
-      axios.get(`${baseUrl}/ride?start=${start}&end=${end}`)
+      axios.get(`${baseUrl}/rides?start=${start}&end=${end}`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
     addRider: (rideId) => new Promise((resolve, reject) => {
-      axios.patch(`${baseUrl}/ride/${rideId}`)
+      axios.patch(`${baseUrl}/rides/${rideId}`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
     completeRide: (rideId) => new Promise((resolve, reject) => {
-      axios.patch(`${baseUrl}/ride/${rideId}/complete`)
+      axios.patch(`${baseUrl}/rides/${rideId}/complete`)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
