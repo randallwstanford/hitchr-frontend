@@ -8,14 +8,11 @@ import UserContext from '../../contexts/UserContext';
 import serverUtils from '../../serverUtils';
 
 const RideItem = ({ ride }) => {
-  const { userId } = useContext(UserContext);
+  const user = useContext(UserContext);
   const {
     rideId, driver, startDest, endDest, completed, riders,
   } = ride;
-  const isDriver = driver.id === userId;
-  function handleComplete() {
-    serverUtils.completeRide(rideId);
-  }
+  const isDriver = driver.id === user.id;
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
       <a href={`/user/${driver.id}`}>{driver.username}</a>
