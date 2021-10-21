@@ -1,6 +1,6 @@
 export default {
   user_id: 12345,
-  username: 'MrDriver',
+  username: 'Opal647',
   rating: 4.5,
   sessionId: '122gjsadlfkj8ldksajf',
   payment_methods: [
@@ -17,4 +17,5 @@ export default {
       url: 'https://cashapp.com/MrDriver',
     },
   ],
+  isdriver: true,
 };
