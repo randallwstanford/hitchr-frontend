@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 // Stylesheet
 import './RideItem.css';
 import UserContext from '../../contexts/UserContext';
+import serverUtils from '../../serverUtils';
 
 const RideItem = ({ ride }) => {
   const { userId } = useContext(UserContext);
@@ -12,6 +13,9 @@ const RideItem = ({ ride }) => {
     rideId, driver, startDest, endDest, completed, riders,
   } = ride;
   const isDriver = driver.id === userId;
+  function handleComplete() {
+    serverUtils.completeRide(rideId);
+  }
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
       <a href={`/user/${driver.id}`}>{driver.username}</a>
@@ -34,7 +38,7 @@ const RideItem = ({ ride }) => {
       }
       {
         isDriver && !completed
-          ? <button className="complete-button" type="button">Mark As Complete</button>
+          ? <button className="complete-button" type="button" onClick={handleComplete}>Mark As Complete</button>
           : null
       }
     </div>

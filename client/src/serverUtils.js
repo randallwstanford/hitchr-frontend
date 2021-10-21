@@ -33,6 +33,7 @@ export default {
       if (process.env.API_URL) {
         axios.get(`${baseUrl}/user/${userId}/rides`)
           .then(({ data }) => {
+            console.log(data);
             resolve(data);
           })
           .catch((err) => reject(err));
@@ -40,9 +41,9 @@ export default {
         resolve(camelcaseKeys(rideList.body.rides, { deep: true }));
       }
     }),
-    completeRide: (rideData) => new Promise((resolve, reject) => {
+    completeRide: (rideId) => new Promise((resolve, reject) => {
       if (process.env.API_URL) {
-        axios.patch(`/user/${rideData.rideId}/complete`, rideData)
+        axios.patch(`/user/${rideId}/complete`)
           .then(({ data }) => resolve(data))
           .catch(reject);
       } else {
