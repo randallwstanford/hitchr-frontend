@@ -20,8 +20,9 @@ const RideSearch = () => {
   function handleSearch() {
     setSearched(true);
     const start = document.getElementById('input-start-loc').value;
+    const startId = document.querySelector(`#start-loc-list option[value="${start}"]`).dataset.value;
     const end = document.getElementById('input-end-loc').value;
-    serverUtils.ride.searchRide(start, end).then((results) => setRideResults(results));
+    serverUtils.ride.searchRide(startId, end).then((results) => setRideResults(results));
     setRideResults([]);
   }
 
@@ -36,7 +37,17 @@ const RideSearch = () => {
         <h1>Search For Rideshares</h1>
         <label htmlFor="input-start-loc">
           PICKUP
-          <input id="input-start-loc" />
+          <input list="start-loc-list" id="input-start-loc" />
+          <datalist id="start-loc-list" aria-label="Starting Destination Input">
+            {startingDestinations.map((destination) => (
+              <option
+                key={destination.id}
+                data-value={destination.id}
+                value={destination.name}
+                aria-label={`Starting destination of ${destination.name}`}
+              />
+            ))}
+          </datalist>
         </label>
         <label htmlFor="input-start-loc">
           DROPOFF
