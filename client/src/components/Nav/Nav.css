@@ -34,8 +34,9 @@
   justify-content: center;
 }
 #user-control button{
-   font-size: 1rem;
-  padding: 1rem;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0;
  }
 #logo{
   font-size: 2rem;

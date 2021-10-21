@@ -33,3 +33,9 @@
 .complete-button{
   width: min-content;
 }
+@media screen and (max-width: 850px){
+  .RideItem{
+    width: auto;
+    flex-direction: column;
+  }
+}
