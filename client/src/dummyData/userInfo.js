@@ -12,6 +12,7 @@ export default {
       url: 'https://venmo.com/Kizzy78',
     },
   ],
+  session_id: '1234',
   average_rider_rating: '0',
   total_rider_ratings: 0,
   is_driver: true,
