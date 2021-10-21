@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import AddPaymentMethod from '../../components/AddPaymentMethod/AddPaymentMethod';
 
 const Auth = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [isDriver, setIsDriver] = useState(false);
+  const [editingPaymentMethod, setEditngPaymentMethod] = useState(false);
 
-  const addPaymentMethod = (e) => {
-    e.preventDefault();
-    // Add Payment
+  const savePaymentMethod = (vendor, url) => {
+    setPaymentMethods(paymentMethods.concat([[vendor, url]]));
+    console.log(paymentMethods);
+    setEditngPaymentMethod(false);
   };
 
   const createAccount = (e) => {
@@ -25,17 +28,23 @@ const Auth = (props) => {
           Username
           <input id="username" name="username" placeholder="Johnny123" onChange={(e) => setUsername(e.target.value)} />
         </label>
-        <label hintFor="password">
+        <label htmlFor="password">
           Password
           <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
         </label>
-        {/* ----- Creation Mode ----- */}
-        <label>
-          <input name="paymentMethod" placeholder="Payment Method" />
-        </label>
-        <input name="serviceName" placeholder="Service Name" />
-        {/* ------------------------- */}
-        <button type="button" onClick={addPaymentMethod}>Add Payment Method</button>
+        <div>
+          {paymentMethods.map((pm) => (
+            <div key={pm[1]}>
+              <p>{pm[0]}</p>
+              <p>{pm[1]}</p>
+            </div>
+          ))}
+        </div>
+
+        {editingPaymentMethod
+          ? <AddPaymentMethod savePaymentMethod={savePaymentMethod} />
+          : <button type="button" onClick={() => setEditngPaymentMethod(true)}>Add Payment Method</button>}
+
         <div>
           Do you plan on driving?
           <label>
