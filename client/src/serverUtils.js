@@ -22,6 +22,11 @@ export default {
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
+    completeRide: (rideId) => new Promise((resolve, reject) => {
+      axios.patch(`${baseUrl}/ride/${rideId}/complete`)
+        .then(({ data }) => resolve(data))
+        .catch(reject);
+    }),
   },
   user: {
     getUser: (userId) => new Promise((resolve, reject) => {
@@ -33,7 +38,7 @@ export default {
       if (process.env.API_URL || process.env.INTEGRATION) {
         axios.get(`${baseUrl}/user/${userId}/rides`)
           .then(({ data }) => {
-            resolve(camelcaseKeys(data, { deep: true }));
+            resolve(data);
           })
           .catch((err) => reject(err));
       } else {
