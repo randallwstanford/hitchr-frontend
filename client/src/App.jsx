@@ -1,7 +1,7 @@
 // Libraries
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
 import camelcaseKeys from 'camelcase-keys';
 
 // Views
@@ -10,6 +10,7 @@ import Dashboard from './views/Dashboard/Dashboard';
 import Login from './views/Login/Login';
 import LoginModel from './views/Login/LoginModel';
 import Register from './views/Auth/Auth';
+import RegisterModel from './views/Auth/AuthModel';
 import User from './views/User/User';
 import CreateRide from './views/CreateRide/CreateRide';
 
@@ -26,6 +27,7 @@ import Nav from './components/Nav/Nav';
 
 const App = () => {
   const [user, setUser] = useState(process.env.NODE_ENV === 'development' ? camelcaseKeys(userInfo, { deep: true }) : emptyUser());
+
   return (
     <div id="App">
       <img
@@ -41,7 +43,7 @@ const App = () => {
               <Login loginCallback={LoginModel} />
             </Route>
             <Route path="/register">
-              <Register registerCallback={console.log} />
+              <Register registerCallback={RegisterModel} />
             </Route>
             {
               !user || !user.sessionId

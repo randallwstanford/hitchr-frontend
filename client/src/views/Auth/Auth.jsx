@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+
 import AddPaymentMethod from '../../components/AddPaymentMethod/AddPaymentMethod';
 
 const Auth = (props) => {
@@ -8,6 +10,8 @@ const Auth = (props) => {
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [isDriver, setIsDriver] = useState(false);
   const [editingPaymentMethod, setEditngPaymentMethod] = useState(false);
+  const history = useHistory();
+  console.log('history:', history);
 
   const savePaymentMethod = (vendor, url) => {
     setPaymentMethods(paymentMethods.concat([[vendor, url]]));
@@ -16,7 +20,7 @@ const Auth = (props) => {
 
   const createAccount = (e) => {
     e.preventDefault();
-    props.registerCallback(username, password, isDriver, paymentMethods);
+    props.registerCallback(history, username, password, isDriver, paymentMethods);
   };
 
   return (
