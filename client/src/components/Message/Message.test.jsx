@@ -16,7 +16,7 @@ describe('Message', () => {
   });
   it('should render without crashing', () => {});
   it('should display message text', () => {
-    const text = screen.getByText(message.text);
-    expect(text).toBeTruthy();
+    const messageText = screen.getByText(message.text);
+    expect(messageText).toBeTruthy();
   });
 });
