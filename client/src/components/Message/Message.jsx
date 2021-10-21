@@ -30,7 +30,5 @@ Message.propTypes = {
     text: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     timestamp: PropTypes.string.isRequired,
-    senderId: PropTypes.number.isRequired,
-    recipientId: PropTypes.number.isRequired,
   }).isRequired,
 };
