@@ -13,7 +13,7 @@ export default {
         recipient_id: 49,
       },
       {
-        text: 'this is a message',
+        text: 'this isasdasd a message',
         username: 'Ashlynn359',
         sender_id: 34,
         timestamp: '2021-10-19T16:43:28.211856',
@@ -21,7 +21,7 @@ export default {
         recipient_id: 49,
       },
       {
-        text: 'this is a message',
+        text: 'this is a mfgddfgdfgessage',
         username: 'Ashlynn359',
         sender_id: 34,
         timestamp: '2021-10-19T16:45:30.301613',
@@ -29,7 +29,7 @@ export default {
         recipient_id: 49,
       },
       {
-        text: 'this AHAHAHHAH ',
+        text: 'this AHAHAHHAH',
         username: 'Ashlynn359',
         sender_id: 34,
         timestamp: '2021-10-19T16:46:11.122314',
@@ -37,7 +37,7 @@ export default {
         recipient_id: 49,
       },
       {
-        text: 'OOH OH OH ',
+        text: 'OOH OH OH',
         username: 'Ashlynn359',
         sender_id: 34,
         timestamp: '2021-10-19T16:46:39.009048',
@@ -45,7 +45,7 @@ export default {
         recipient_id: 49,
       },
       {
-        text: 'OOH OH ASDASOH ',
+        text: 'OOH OH ASDASOH',
         username: 'Ashlynn359',
         sender_id: 34,
         timestamp: '2021-10-19T16:46:41.839137',
