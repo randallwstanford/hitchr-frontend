@@ -30,13 +30,14 @@ export default {
         .catch(reject);
     }),
     getRides: (userId) => new Promise((resolve, reject) => {
-      if (process.env.API_URL) {
+      if (process.env.API_URL || process.env.INTEGRATION) {
         axios.get(`${baseUrl}/user/${userId}/rides`)
           .then(({ data }) => {
-            resolve(data);
+            resolve(camelcaseKeys(data, { deep: true }));
           })
           .catch((err) => reject(err));
       } else {
+        camelcaseKeys(rideList.body.rides, { deep: true });
         resolve(camelcaseKeys(rideList.body.rides, { deep: true }));
       }
     }),
