@@ -2,14 +2,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import camelcaseKeys from 'camelcase-keys';
-import UserContext from '../../contexts/UserContext.js';
+import UserContext from '../../contexts/UserContext';
 
 // Components
 import MessagesList from './MessagesList';
 
 // Dummy Data
 import messagesList from '../../dummyData/messagesList';
-import userInfo from '../../dummyData/userInfo.js';
+import userInfo from '../../dummyData/userInfo';
 
 const messages = camelcaseKeys(messagesList.body.messages);
 
