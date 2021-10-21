@@ -9,6 +9,7 @@ import rideList from '../../dummyData/rideList';
 
 // Stylesheet
 import './RideSearch.css';
+import UpdateContext from '../../contexts/UpdateContext';
 
 const RideSearch = () => {
   const [rideResults, setRideResults] = useState(
@@ -37,53 +38,56 @@ const RideSearch = () => {
 
   return (
     <div id="RideSearch">
-      <form id="ride-search-form">
-        <h1>Search For Rideshares</h1>
-        <label htmlFor="input-start-loc">
-          PICKUP
-          <input id="input-start-loc" list="start-loc-list" />
-          <datalist id="start-loc-list" aria-label="Starting destination input">
-            {startingDestinations.map((destination) => (
-              <option
-                key={destination.id}
-                data-value={destination.id}
-                value={destination.name}
-                aria-label={`Starting destination of ${destination.name}`}
-              />
-            ))}
-          </datalist>
-        </label>
-        <label htmlFor="input-start-loc">
-          DROPOFF
-          <input id="input-end-loc" list="end-loc-list" required />
-          <datalist id="end-loc-list" aria-label="Ending destination input">
-            {endingDestinations.map((destination) => (
-              <option
-                key={destination.id}
-                data-value={destination.id}
-                value={destination.name}
-                aria-label={`Ending destination of ${destination.name}`}
-              />
-            ))}
-          </datalist>
-        </label>
-        <button type="button" onClick={handleSearch}>Search Rides</button>
-      </form>
-      {
-        searched
-          ? (
-            <div id="search-results">
-              <RideList rides={rideResults} noList={<NoRides />} />
-            </div>
-          ) : (
-            <div id="create-ride-plug">
-              <p>Want to drive fellow Hitchrs?</p>
-              <a href="/create">
-                <button type="button">Create A Ride</button>
-              </a>
-            </div>
-          )
-      }
+      <UpdateContext.Provider value={{ update: handleSearch }}>
+        <form id="ride-search-form">
+          <h1>Search For Rideshares</h1>
+          <label htmlFor="input-start-loc">
+            PICKUP
+            <input id="input-start-loc" list="start-loc-list" />
+            <datalist id="start-loc-list" aria-label="Starting destination input">
+              {startingDestinations.map((destination) => (
+                <option
+                  key={destination.id}
+                  data-value={destination.id}
+                  value={destination.name}
+                  aria-label={`Starting destination of ${destination.name}`}
+                />
+              ))}
+            </datalist>
+          </label>
+          <label htmlFor="input-start-loc">
+            DROPOFF
+            <input id="input-end-loc" list="end-loc-list" required />
+            <datalist id="end-loc-list" aria-label="Ending destination input">
+              {endingDestinations.map((destination) => (
+                <option
+                  key={destination.id}
+                  data-value={destination.id}
+                  value={destination.name}
+                  aria-label={`Ending destination of ${destination.name}`}
+                />
+              ))}
+            </datalist>
+          </label>
+          <button type="button" onClick={handleSearch}>Search Rides</button>
+        </form>
+        {
+          searched
+            ? (
+              <div id="search-results">
+                <RideList rides={rideResults} noList={<NoRides />} />
+              </div>
+            ) : (
+              <div id="create-ride-plug">
+                <p>Want to drive fellow Hitchrs?</p>
+                <a href="/create">
+                  <button type="button">Create A Ride</button>
+                </a>
+              </div>
+            )
+        }
+      </UpdateContext.Provider>
+
     </div>
   );
 };

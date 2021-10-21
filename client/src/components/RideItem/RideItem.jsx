@@ -23,7 +23,7 @@ const RideItem = ({ ride }) => {
   const isDriver = driver.id === user.id;
   const isRider = riders && riders.includes(user.id);
   function handleJoin() {
-    serverUtils.ride.addRider({ rideId, userId: user.id })
+    serverUtils.rides.addRider({ rideId, userId: user.id })
       .then(() => {
         if (updateFunction) {
           updateFunction();
