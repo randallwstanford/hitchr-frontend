@@ -8,6 +8,7 @@ import camelcaseKeys from 'camelcase-keys';
 import RideSearch from './views/RideSearch/RideSearch';
 import Dashboard from './views/Dashboard/Dashboard';
 import Login from './views/Login/Login';
+import LoginModel from './views/Login/LoginModel';
 import User from './views/User/User';
 import CreateRide from './views/CreateRide/CreateRide';
 
@@ -23,7 +24,7 @@ import emptyUser from './dummyData/emptyUser';
 import Nav from './components/Nav/Nav';
 
 const App = () => {
-  const [user] = useState(process.env.NODE_ENV === 'development' ? camelcaseKeys(userInfo, { deep: true }) : emptyUser);
+  const [user, setUser] = useState(process.env.NODE_ENV === 'development' ? camelcaseKeys(userInfo, { deep: true }) : emptyUser());
   return (
     <div id="App">
       <img
@@ -35,8 +36,8 @@ const App = () => {
         <Router>
           <UserContext.Provider value={user}>
             <Nav />
-            <Route path={['/login', '/signup']}>
-              <Login loginCallback={console.log} />
+            <Route path="/login">
+              <Login loginCallback={LoginModel} />
             </Route>
             {
               !user || !user.sessionId

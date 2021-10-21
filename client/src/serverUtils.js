@@ -8,7 +8,7 @@ const baseUrl = process.env.API_URL ? `${process.env.API_URL}/api` : 'http://127
 export default {
   ride: {
     postRide: (formData) => new Promise((resolve, reject) => {
-      axios.post('http://localhost:5000/api/rides', formData)
+      axios.post(`${baseUrl}/rides`, formData)
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
@@ -67,5 +67,11 @@ export default {
         .then(({ data }) => resolve(data))
         .catch(reject);
     }),
+  },
+  auth: {
+    login: (username, password) => {
+      const url = `${baseUrl}/login/`;
+      console.log(`sending req to ${url}`);
+      return axios.post(url, { username, password }); },
   },
 };
