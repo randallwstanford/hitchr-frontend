@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 // React
 import React, { useEffect, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import serverUtils from '../../serverUtils';
@@ -7,7 +9,6 @@ import serverUtils from '../../serverUtils';
 // Stylesheet
 import './MessagesList.css';
 import Message from '../Message/Message';
-import messages from '../../dummyData/messagesList.js';
 
 const MessagesList = ({ messages }) => {
   const { id } = useContext(UserContext);
@@ -25,9 +26,8 @@ const MessagesList = ({ messages }) => {
     if (process.env.NODE_ENV !== 'test') {
       setMessages(await getData());
     } else {
-      setMessages(messages)
+      setMessages(messages);
     }
-
   }, []);
 
   // setInterval(async () => {
@@ -61,3 +61,11 @@ const MessagesList = ({ messages }) => {
 };
 
 export default MessagesList;
+
+MessagesList.propTypes = {
+  messages: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    timestamp: PropTypes.string.isRequired,
+  }).isRequired,
+};
