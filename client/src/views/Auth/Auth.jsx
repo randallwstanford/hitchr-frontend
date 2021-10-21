@@ -11,7 +11,6 @@ const Auth = (props) => {
 
   const savePaymentMethod = (vendor, url) => {
     setPaymentMethods(paymentMethods.concat([[vendor, url]]));
-    console.log(paymentMethods);
     setEditngPaymentMethod(false);
   };
 
