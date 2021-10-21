@@ -1,0 +1,32 @@
+.messages-container {
+  margin: 0 auto;
+  border: 2px solid var(--dark);
+  margin-bottom: 100px;
+  width: 90%;
+  text-align: center;
+  background-color: var(--med);
+}
+
+@media screen and (max-width: 768px){
+  .messages-container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .messages-container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 320px){
+  .messages-container {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 1440px){
+  .messages-container {
+    width: 95%;
+  }
+}
