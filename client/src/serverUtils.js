@@ -48,7 +48,7 @@ export default {
     }),
     completeRide: (rideId) => new Promise((resolve, reject) => {
       if (process.env.API_URL) {
-        axios.patch(`${baseUrl}/user/${rideId}/complete`)
+        axios.patch(`${baseUrl}/rides/${rideId}/complete`)
           .then(({ data }) => resolve(data))
           .catch(reject);
       } else {

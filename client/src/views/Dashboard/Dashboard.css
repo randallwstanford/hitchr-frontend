@@ -12,6 +12,13 @@
   padding: 1rem;
   margin: 1rem;
 }
+#user-rides{
+  background-color: var(--med);
+  padding: 1rem;
+}
+#user-rides h2{
+  border-bottom: 0.25rem solid var(--dark);
+}
 #user-info span{
   font-size: 1.25rem;
   border-bottom: 0.25rem solid var(--dark);

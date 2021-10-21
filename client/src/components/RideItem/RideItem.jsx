@@ -2,19 +2,30 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
+// Contexts & Utils
+import UserContext from '../../contexts/UserContext';
+import UpdateContext from '../../contexts/UpdateContext';
+import serverUtils from '../../serverUtils';
+
 // Stylesheet
 import './RideItem.css';
-import UserContext from '../../contexts/UserContext';
-import serverUtils from '../../serverUtils';
 
 const RideItem = ({ ride }) => {
   const user = useContext(UserContext);
+  const updateContext = useContext(UpdateContext);
+  let updateFunction;
+  if (updateContext && updateContext.update) {
+    updateFunction = updateContext.update;
+  }
   const {
     rideId, driver, startDest, endDest, completed, riders,
   } = ride;
   const isDriver = driver.id === user.id;
   function handleComplete() {
     serverUtils.user.completeRide(rideId);
+    if (updateFunction) {
+      updateFunction();
+    }
   }
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
