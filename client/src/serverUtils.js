@@ -71,7 +71,20 @@ export default {
   auth: {
     login: (username, password) => {
       const url = `${baseUrl}/login/`;
-      console.log(`sending req to ${url}`);
-      return axios.post(url, { username, password }); },
+      return axios.post(url, { username, password });
+    },
+    register: (username, password, isDriver, paymentMethods) => {
+      const url = `${baseUrl}/create/`;
+      return axios.post(url, {
+        username,
+        password,
+        isDriver,
+        paymentMethods,
+      });
+    },
+    logout: (session) => {
+      const url = `${baseUrl}/logout/`;
+      return axios.delete(url, { session });
+    },
   },
 };

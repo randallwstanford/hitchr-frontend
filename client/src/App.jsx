@@ -9,6 +9,7 @@ import RideSearch from './views/RideSearch/RideSearch';
 import Dashboard from './views/Dashboard/Dashboard';
 import Login from './views/Login/Login';
 import LoginModel from './views/Login/LoginModel';
+import Register from './views/Auth/Auth';
 import User from './views/User/User';
 import CreateRide from './views/CreateRide/CreateRide';
 
@@ -38,6 +39,9 @@ const App = () => {
             <Nav />
             <Route path="/login">
               <Login loginCallback={LoginModel} />
+            </Route>
+            <Route path="/register">
+              <Register registerCallback={console.log} />
             </Route>
             {
               !user || !user.sessionId
