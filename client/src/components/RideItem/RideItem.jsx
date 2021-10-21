@@ -13,6 +13,9 @@ const RideItem = ({ ride }) => {
     rideId, driver, startDest, endDest, completed, riders,
   } = ride;
   const isDriver = driver.id === user.id;
+  function handleComplete() {
+    serverUtils.user.completeRide(rideId);
+  }
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
       <a href={`/user/${driver.id}`}>{driver.username}</a>

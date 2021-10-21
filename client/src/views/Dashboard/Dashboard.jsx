@@ -45,7 +45,7 @@ const Dashboard = () => {
           <RideList
             rides={rides.filter((ride) => !ride.completed)}
             noList={<NoComingRides />}
-            completeRide={completeRide()}
+            completeRide={completeRide}
           />
         </div>
         <div id="UpcomingRides">
