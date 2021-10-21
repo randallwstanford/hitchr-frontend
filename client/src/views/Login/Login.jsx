@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import './Login.css';
 
-const Login = () => {
+const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  function submit() {
-    console.log(username, password);
-  }
 
   return (
     <div>
@@ -22,10 +20,14 @@ const Login = () => {
           Password
           <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
         </label>
-        <button type="button" onClick={submit}>Login</button>
+        <button type="button" onClick={() => props.loginCallback(username, password)}>Login</button>
       </form>
     </div>
-  )
+  );
+};
+
+Login.propTypes = {
+  loginCallback: PropTypes.func.isRequired,
 };
 
 export default Login;

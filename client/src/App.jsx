@@ -36,7 +36,7 @@ const App = () => {
           <UserContext.Provider value={user}>
             <Nav />
             <Route path={['/login', '/signup']}>
-              <Login />
+              <Login loginCallback={console.log} />
             </Route>
             {
               !user || !user.sessionId
