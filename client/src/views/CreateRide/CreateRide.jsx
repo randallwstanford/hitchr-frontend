@@ -8,9 +8,10 @@ import GMap from '../../components/GMap/GMap';
 import serverUtils from '../../serverUtils';
 
 import UserContext from '../../contexts/UserContext';
+
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-const getDateformat = (dateOb) => {
+/* const getDateformat = (dateOb) => {
   const date = (`0${dateOb.getDate()}`).slice(-2);
   const month = (`0${dateOb.getMonth() + 1}`).slice(-2);
   const year = dateOb.getFullYear();
@@ -19,12 +20,12 @@ const getDateformat = (dateOb) => {
   const seconds = dateOb.getSeconds();
   const result = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
   return result;
-};
+}; */
 
 function CreateRide() {
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
-  const { username, isDriver } = useContext(UserContext);
+  const { id, isDriver } = useContext(UserContext);
   function handleStartInput() {
     const startInput = document.getElementById('input-start-loc').value;
     setStart(startInput);
@@ -35,16 +36,18 @@ function CreateRide() {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
+    // check if the start and destination name are valid:
+    // const ifvalid = checkifvalid(event.target[0].value);
+    // console.log('ifvalid', ifvalid);
     if (!isDriver) {
       return;
     }
-    // todo: get driverId
     const submitBody = { // convert format in server side
-      usernameToDriverId: username,
+      driverId: id,
       startDestName: event.target[0].value, // 0
       endDestName: event.target[1].value, // 1
       availableSeats: parseInt(event.target[3].value, 10), // 3
-      completed: getDateformat(new Date()),
+      completed: null, // getDateformat(new Date())
       price: parseInt(event.target[2].value, 10), // 2
     };
     serverUtils.ride.postRide(submitBody)
