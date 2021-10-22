@@ -1,6 +1,6 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 
+<<<<<<< HEAD
 const NoSearch = () => {
   const history = useHistory();
   return (
@@ -12,5 +12,15 @@ const NoSearch = () => {
     </div>
   );
 };
+=======
+const NoSearch = () => (
+  <div id="create-ride-plug">
+    <p>Want to drive fellow Hitchrs?</p>
+    <a href="/create">
+      <button type="button">Create A Ride</button>
+    </a>
+  </div>
+);
+>>>>>>> parent of 6b42564 (changed to onlcick instead of hrefs)
 
 export default NoSearch;

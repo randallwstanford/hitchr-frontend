@@ -1,8 +1,11 @@
 // React
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+<<<<<<< HEAD
 import { useHistory } from 'react-router-dom';
 
+=======
+>>>>>>> parent of 6b42564 (changed to onlcick instead of hrefs)
 
 // Contexts & Utils
 import UserContext from '../../contexts/UserContext';
@@ -15,8 +18,6 @@ import './RideItem.css';
 const RideItem = ({ ride }) => {
   const user = useContext(UserContext);
   const updateContext = useContext(UpdateContext);
-  const history = useHistory();
-
   let updateFunction;
   if (updateContext && updateContext.update) {
     updateFunction = updateContext.update;
@@ -44,7 +45,7 @@ const RideItem = ({ ride }) => {
   }
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
-      <a onClick={() => history.push(`/user/${driver.id}`)}>{driver.username}</a>
+      <a href={`/user/${driver.id}`}>{driver.username}</a>
       {
         riders && riders.length
           ? <span>{`+${riders.length}`}</span>
