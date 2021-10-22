@@ -16,7 +16,7 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   const {
-    id, username, paymentMethods,
+    id, username, paymentMethods, isDriver,
   } = useContext(UserContext);
   const [rides, setRides] = useState([]);
   function fetchRides() {
@@ -42,33 +42,36 @@ const Dashboard = () => {
           <PayMethodList methods={paymentMethods} />
         </div>
         <div>
-          <div id="user-rides">
-            <h2>Driver Dashboard</h2>
-            <div id="UpcomingRides">
-              <h3>Upcoming Rides</h3>
-              <RideList
-                rides={
-                  rides && rides.driver
-                    ? rides.driver.filter((ride) => !ride.completed)
-                    : null
-                }
-                noList={<NoComingRides />}
-                completeRide={completeRide}
-              />
-            </div>
-            <div id="UpcomingRides">
-              <h3>Past Rides</h3>
-              <RideList
-                rides={
-                  rides && rides.driver ? rides.driver
-                    .filter((ride) => ride.completed)
-                    .sort((a, b) => (a.rideId > b.rideId ? -1 : 1))
-                    : null
-                }
-                noList={<NoPastRides />}
-              />
-            </div>
-          </div>
+          {isDriver
+            ? (
+              <div id="user-rides">
+                <h2>Driver Dashboard</h2>
+                <div id="UpcomingRides">
+                  <h3>Upcoming Rides</h3>
+                  <RideList
+                    rides={
+                      rides && rides.driver
+                        ? rides.driver.filter((ride) => !ride.completed)
+                        : null
+                    }
+                    noList={<NoComingRides />}
+                    completeRide={completeRide}
+                  />
+                </div>
+                <div id="UpcomingRides">
+                  <h3>Past Rides</h3>
+                  <RideList
+                    rides={
+                      rides && rides.driver ? rides.driver
+                        .filter((ride) => ride.completed)
+                        .sort((a, b) => (a.rideId > b.rideId ? -1 : 1))
+                        : null
+                    }
+                    noList={<NoPastRides />}
+                  />
+                </div>
+              </div>
+            ) : null}
           <div id="user-rides">
             <h2>Rider Dashboard</h2>
             <div id="UpcomingRides">
