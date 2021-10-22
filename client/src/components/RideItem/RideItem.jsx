@@ -21,11 +21,22 @@ const RideItem = ({ ride }) => {
     rideId, driver, startDest, endDest, completed, riders,
   } = ride;
   const isDriver = driver.id === user.id;
+  const isRider = riders && riders.includes(user.id);
+  function handleJoin() {
+    serverUtils.rides.addRider({ rideId, userId: user.id })
+      .then(() => {
+        if (updateFunction) {
+          updateFunction();
+        }
+      });
+  }
   function handleComplete() {
-    serverUtils.user.completeRide(rideId);
-    if (updateFunction) {
-      updateFunction();
-    }
+    serverUtils.user.completeRide(rideId)
+      .then(() => {
+        if (updateFunction) {
+          updateFunction();
+        }
+      });
   }
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
@@ -43,8 +54,13 @@ const RideItem = ({ ride }) => {
           : null
       }
       {
-        !isDriver && !completed
-          ? <button type="button">Join</button>
+        !isDriver && !isRider && !completed
+          ? <button type="button" onClick={handleJoin}>Join</button>
+          : null
+      }
+      {
+        isRider && !completed
+          ? <button type="button">Joined</button>
           : null
       }
       {
@@ -71,7 +87,9 @@ RideItem.propTypes = {
     riders: PropTypes.arrayOf(PropTypes.shape),
   }).isRequired,
   driver: PropTypes.bool,
+  joinFunction: PropTypes.func,
 };
 RideItem.defaultProps = {
   driver: false,
+  joinFunction: null,
 };

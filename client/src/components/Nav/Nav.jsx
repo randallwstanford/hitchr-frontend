@@ -18,7 +18,10 @@ const Nav = () => {
       <div id="navRight">
         <a href="/search">Search Rides</a>
         <a href="/create">Create Ride</a>
-        <a id="username" href="/dashboard">{username}</a>
+        <div id="user-control">
+          <a id="username" href="/dashboard">{username}</a>
+          <button type="button">Logout</button>
+        </div>
       </div>
     </div>
   );
