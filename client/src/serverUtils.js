@@ -79,4 +79,23 @@ export default {
         .catch(reject);
     }),
   },
+  auth: {
+    login: (username, password) => {
+      const url = `${baseUrl}/login/`;
+      return axios.post(url, { username, password });
+    },
+    register: (username, password, isDriver, paymentMethods) => {
+      const url = `${baseUrl}/create/`;
+      return axios.post(url, {
+        username,
+        password,
+        isDriver,
+        paymentMethods,
+      });
+    },
+    logout: (session) => {
+      const url = `${baseUrl}/logout/`;
+      return axios.delete(url, { session });
+    },
+  },
 };

@@ -1,5 +1,6 @@
 // React
 import React, { useContext } from 'react';
+import Proptypes from 'prop-types';
 
 // Stylesheet
 import './Nav.css';
@@ -7,7 +8,7 @@ import './Nav.css';
 // Context
 import UserContext from '../../contexts/UserContext';
 
-const Nav = () => {
+const Nav = ({ logoutCallback }) => {
   const { username } = useContext(UserContext);
   return (
     <div id="Nav">
@@ -20,10 +21,15 @@ const Nav = () => {
         <a href="/create">Create Ride</a>
         <div id="user-control">
           <a id="username" href="/dashboard">{username}</a>
-          <button type="button">Logout</button>
+          <button type="button" onClick={logoutCallback}>Logout</button>
         </div>
       </div>
     </div>
   );
 };
+
+Nav.propTypes = {
+  logoutCallback: Proptypes.func.isRequired,
+};
+
 export default Nav;
