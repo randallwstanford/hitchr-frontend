@@ -4,3 +4,4 @@ coverage
 gMapKey.js
 bundle.*
 .DS_Store
+GMap.js

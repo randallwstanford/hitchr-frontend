@@ -1,13 +1,16 @@
 // Libraries
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
 import camelcaseKeys from 'camelcase-keys';
 
 // Views
 import RideSearch from './views/RideSearch/RideSearch';
 import Dashboard from './views/Dashboard/Dashboard';
-import Auth from './views/Auth/Auth';
+import Login from './views/Login/Login';
+import LoginModel from './views/Login/LoginModel';
+import Register from './views/Auth/Auth';
+import RegisterModel from './views/Auth/AuthModel';
 import User from './views/User/User';
 import CreateRide from './views/CreateRide/CreateRide';
 
@@ -23,7 +26,12 @@ import emptyUser from './dummyData/emptyUser';
 import Nav from './components/Nav/Nav';
 
 const App = () => {
-  const [user] = useState(process.env.NODE_ENV === 'development' ? camelcaseKeys(userInfo, { deep: true }) : emptyUser);
+  const [user, setUser] = useState(process.env.NODE_ENV === 'development' ? camelcaseKeys(userInfo, { deep: true }) : emptyUser());
+
+  const logout = () => {
+    setUser(emptyUser());
+  };
+
   return (
     <div id="App">
       <img
@@ -34,9 +42,12 @@ const App = () => {
       <div id="content">
         <Router>
           <UserContext.Provider value={user}>
-            <Nav />
-            <Route path={['/login', '/signup']}>
-              <Auth />
+            <Nav logoutCallback={logout} />
+            <Route path="/login">
+              <Login loginCallback={LoginModel} />
+            </Route>
+            <Route path="/register">
+              <Register registerCallback={RegisterModel} />
             </Route>
             {
               !user || !user.sessionId
