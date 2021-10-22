@@ -28,7 +28,6 @@ import Nav from './components/Nav/Nav';
 const App = () => {
   const [user, setUser] = useState(process.env.NODE_ENV === 'development' ? camelcaseKeys(userInfo, { deep: true }) : emptyUser());
 
-  console.log(user);
   const logout = () => {
     setUser(emptyUser());
   };
