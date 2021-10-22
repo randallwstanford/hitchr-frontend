@@ -11,7 +11,8 @@ import './MessagesList.css';
 import Message from '../Message/Message';
 
 const MessagesList = ({ messages }) => {
-  const { id } = useContext(UserContext);
+  const { id, username } = useContext(UserContext);
+  let notMyUsername;
 
   let userId = 10;
   if (process.env.NODE_ENV !== 'test') {
@@ -45,17 +46,26 @@ const MessagesList = ({ messages }) => {
     serverUtils.messages.postMessage(formData, userId, id);
   };
 
+  for (let i = 0; i < allMessages.length; i += 1) {
+    if (allMessages[i].username !== username) {
+      notMyUsername = allMessages[i].username;
+    }
+  }
+
   return (
-    <div data-testid="MessagesList" className="messages-container">
-      {
-        allMessages.length
-          ? allMessages.map((message) => <Message message={message} key={message.message_id} />)
-          : <div>No messages found!</div>
-      }
-      <form onSubmit={newMessage}>
-        <input name="newMessage" placeholder="Enter Message Here" />
-        <button type="submit">Post Message</button>
-      </form>
+    <div>
+      <div className="current-username">{notMyUsername}</div>
+      <div data-testid="MessagesList" className="messages-container">
+        {
+          allMessages.length
+            ? allMessages.map((message) => <Message message={message} key={message.message_id} />)
+            : <div>No messages found!</div>
+        }
+        <form onSubmit={newMessage}>
+          <input name="newMessage" placeholder="Enter Message Here" />
+          <button type="submit">Post Message</button>
+        </form>
+      </div>
     </div>
   );
 };
