@@ -20,6 +20,9 @@
   padding: 1rem;
   margin: 2rem;
 }
+#ride-search-form label{
+  width: 95%;
+}
 #RideSearch input{
   margin-bottom: 1rem;
   width: 100%;
