@@ -1,7 +1,7 @@
 // React
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-impot { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 // Contexts & Utils

@@ -6,7 +6,7 @@ const NoSearch = () => {
   return (
     <div id="create-ride-plug">
       <p>Want to drive fellow Hitchrs?</p>
-      <a onClick={() => history.push("/create")}>
+      <a onClick={() => history.push('/create')}>
         <button type="button">Create A Ride</button>
       </a>
     </div>

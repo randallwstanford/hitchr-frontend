@@ -6,7 +6,7 @@ const NoRides = () => {
   return (
     <div id="no-rides">
       <p>No rides match your search. Create this ride for others?</p>
-      <a onClick={() => history.push("/create")}>
+      <a onClick={() => history.push('/create')}>
         <button type="button">Create Ride</button>
       </a>
     </div>
