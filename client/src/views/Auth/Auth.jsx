@@ -11,7 +11,6 @@ const Auth = (props) => {
   const [isDriver, setIsDriver] = useState(false);
   const [editingPaymentMethod, setEditngPaymentMethod] = useState(false);
   const history = useHistory();
-  console.log('history:', history);
 
   const savePaymentMethod = (vendor, url) => {
     setPaymentMethods(paymentMethods.concat([[vendor, url]]));
