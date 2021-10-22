@@ -27,7 +27,12 @@ const RideSearch = () => {
     const startId = document.querySelector(`#start-loc-list option[value="${start}"]`).dataset.value;
     const end = document.getElementById('input-end-loc').value;
     const endId = document.querySelector(`#end-loc-list option[value="${end}"]`).dataset.value;
-    serverUtils.rides.searchRide(startId, endId).then((results) => setRideResults(results));
+    serverUtils.rides.searchRide(startId, endId).then((results) => {
+      const unJoined = results.filter(
+        (ride) => !ride.riders || !ride.riders.length || !ride.riders.includes(user.id),
+      );
+      setRideResults(unJoined);
+    });
     setRideResults([]);
   }
 
@@ -77,7 +82,10 @@ const RideSearch = () => {
           searched || user.isDriver
             ? (
               <div id="search-results">
-                <RideList rides={rideResults} noList={searched ? <NoRides /> : <NoSearch />} />
+                <RideList
+                  rides={rideResults}
+                  noList={searched ? <NoRides /> : <NoSearch />}
+                />
               </div>
             ) : null
         }
