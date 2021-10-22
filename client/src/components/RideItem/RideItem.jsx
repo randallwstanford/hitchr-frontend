@@ -1,6 +1,8 @@
 // React
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+impot { useHistory} from 'react-router-dom';
+
 
 // Contexts & Utils
 import UserContext from '../../contexts/UserContext';
@@ -13,6 +15,8 @@ import './RideItem.css';
 const RideItem = ({ ride }) => {
   const user = useContext(UserContext);
   const updateContext = useContext(UpdateContext);
+  const history = useHistory();
+
   let updateFunction;
   if (updateContext && updateContext.update) {
     updateFunction = updateContext.update;
@@ -40,7 +44,7 @@ const RideItem = ({ ride }) => {
   }
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
-      <a href={`/user/${driver.id}`}>{driver.username}</a>
+      <a onClick={() => history.push(`/user/${driver.id}`)}>{driver.username}</a>
       {
         users && users.length
           ? <span>{`+${users.length}`}</span>
