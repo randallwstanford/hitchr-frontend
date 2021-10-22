@@ -13,6 +13,7 @@ import serverUtils from '../../serverUtils';
 
 // Style Sheet
 import './Dashboard.css';
+import NoComingRidesRider from './NoComingRidesRider';
 
 const Dashboard = () => {
   const {
@@ -78,7 +79,7 @@ const Dashboard = () => {
               <h3>Upcoming Rides</h3>
               <RideList
                 rides={rides && rides.rider ? rides.rider.filter((ride) => !ride.completed) : null}
-                noList={<NoComingRides />}
+                noList={<NoComingRidesRider />}
                 completeRide={completeRide}
               />
             </div>
