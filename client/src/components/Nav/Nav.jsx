@@ -9,7 +9,7 @@ import './Nav.css';
 import UserContext from '../../contexts/UserContext';
 
 const Nav = ({ logoutCallback }) => {
-  const { username } = useContext(UserContext);
+  const user = useContext(UserContext);
   return (
     <div id="Nav">
       <div id="brand">
@@ -18,9 +18,13 @@ const Nav = ({ logoutCallback }) => {
       </div>
       <div id="navRight">
         <a href="/search">Search Rides</a>
-        <a href="/create">Create Ride</a>
+        {
+          user.isDriver
+            ? <a href="/create">Create Ride</a>
+            : null
+        }
         <div id="user-control">
-          <a id="username" href="/dashboard">{username}</a>
+          <a id="username" href="/dashboard">{user.username}</a>
           <button type="button" onClick={logoutCallback}>Logout</button>
         </div>
       </div>
