@@ -28,6 +28,11 @@ import Nav from './components/Nav/Nav';
 const App = () => {
   const [user, setUser] = useState(process.env.NODE_ENV === 'development' ? camelcaseKeys(userInfo, { deep: true }) : emptyUser());
 
+  console.log(user);
+  const logout = () => {
+    setUser(emptyUser());
+  };
+
   return (
     <div id="App">
       <img
@@ -38,7 +43,7 @@ const App = () => {
       <div id="content">
         <Router>
           <UserContext.Provider value={user}>
-            <Nav />
+            <Nav logoutCallback={logout} />
             <Route path="/login">
               <Login loginCallback={LoginModel} />
             </Route>
