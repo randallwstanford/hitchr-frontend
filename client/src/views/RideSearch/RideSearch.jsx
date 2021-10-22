@@ -1,23 +1,25 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from 'react';
-import camelcaseKeys from 'camelcase-keys';
+import React, { useState, useEffect, useContext } from 'react';
 import RideList from '../../components/RideList/RideList';
 import serverUtils from '../../serverUtils';
 
+// Sub-Components
 import NoRides from './NoRides';
-import rideList from '../../dummyData/rideList';
+import NoSearch from './NoSearch';
+
+// Contexts
+import UpdateContext from '../../contexts/UpdateContext';
+import UserContext from '../../contexts/UserContext';
 
 // Stylesheet
 import './RideSearch.css';
-import UpdateContext from '../../contexts/UpdateContext';
 
 const RideSearch = () => {
-  const [rideResults, setRideResults] = useState(
-    camelcaseKeys(rideList.body.rides, { deep: true }),
-  );
-  const [searched, setSearched] = useState(true);
+  const [rideResults, setRideResults] = useState([]);
+  const [searched, setSearched] = useState(false);
   const [startingDestinations, setStartingDestinations] = useState([]);
   const [endingDestinations, setEndingDestinations] = useState([]);
+  const user = useContext(UserContext);
 
   function handleSearch() {
     setSearched(true);
@@ -72,22 +74,14 @@ const RideSearch = () => {
           <button type="button" onClick={handleSearch}>Search Rides</button>
         </form>
         {
-          searched
+          searched || user.isDriver
             ? (
               <div id="search-results">
-                <RideList rides={rideResults} noList={<NoRides />} />
+                <RideList rides={rideResults} noList={searched ? <NoRides /> : <NoSearch />} />
               </div>
-            ) : (
-              <div id="create-ride-plug">
-                <p>Want to drive fellow Hitchrs?</p>
-                <a href="/create">
-                  <button type="button">Create A Ride</button>
-                </a>
-              </div>
-            )
+            ) : null
         }
       </UpdateContext.Provider>
-
     </div>
   );
 };
