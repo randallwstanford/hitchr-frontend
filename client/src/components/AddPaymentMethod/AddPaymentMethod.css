@@ -1,0 +1,4 @@
+.add-payment-tile {
+  display: flex;
+  flex-flow: row nowrap;
+}

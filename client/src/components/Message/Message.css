@@ -1,0 +1,11 @@
+.message {
+  border: 2px solid var(--dark);
+  padding: 1rem;
+  margin: 0 auto;
+  padding: 15px;
+  font-size: 1.6rem;
+}
+
+.message-text {
+  padding: 10px;
+}

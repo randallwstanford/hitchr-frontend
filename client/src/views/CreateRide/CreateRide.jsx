@@ -50,7 +50,7 @@ function CreateRide() {
       completed: null, // getDateformat(new Date())
       price: parseInt(event.target[2].value, 10), // 2
     };
-    serverUtils.ride.postRide(submitBody)
+    serverUtils.rides.postRide(submitBody)
       .then(() => { console.log('post ride successfully'); })
       .catch((err) => console.log(err));
   };

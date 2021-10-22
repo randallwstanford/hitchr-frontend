@@ -2,22 +2,48 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
+// Contexts & Utils
+import UserContext from '../../contexts/UserContext';
+import UpdateContext from '../../contexts/UpdateContext';
+import serverUtils from '../../serverUtils';
+
 // Stylesheet
 import './RideItem.css';
-import UserContext from '../../contexts/UserContext';
 
 const RideItem = ({ ride }) => {
   const user = useContext(UserContext);
+  const updateContext = useContext(UpdateContext);
+  let updateFunction;
+  if (updateContext && updateContext.update) {
+    updateFunction = updateContext.update;
+  }
   const {
-    rideId, driver, startDest, endDest, completed, riders,
+    rideId, driver, startDest, endDest, completed, users,
   } = ride;
   const isDriver = driver.id === user.id;
+  const isRider = users && users.includes(user.id);
+  function handleJoin() {
+    serverUtils.rides.addRider({ rideId, userId: user.id })
+      .then(() => {
+        if (updateFunction) {
+          updateFunction();
+        }
+      });
+  }
+  function handleComplete() {
+    serverUtils.user.completeRide(rideId)
+      .then(() => {
+        if (updateFunction) {
+          updateFunction();
+        }
+      });
+  }
   return (
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
       <a href={`/user/${driver.id}`}>{driver.username}</a>
       {
-        riders && riders.length
-          ? <span>{`+${riders.length}`}</span>
+        users && users.length
+          ? <span>{`+${users.length}`}</span>
           : <span>+0</span>
       }
       <span>{startDest}</span>
@@ -28,13 +54,18 @@ const RideItem = ({ ride }) => {
           : null
       }
       {
-        !isDriver && !completed
-          ? <button type="button">Join</button>
+        !isDriver && !isRider && !completed
+          ? <button type="button" onClick={handleJoin}>Join</button>
           : null
       }
       {
-        isDriver && !completed
-          ? <button className="complete-button" type="button">Mark As Complete</button>
+        isRider && !completed
+          ? <button type="button">Joined</button>
+          : null
+      }
+      {
+        (isDriver || isRider) && !completed
+          ? <button className="complete-button" type="button" onClick={handleComplete}>Mark As Complete</button>
           : null
       }
     </div>
@@ -56,7 +87,9 @@ RideItem.propTypes = {
     riders: PropTypes.arrayOf(PropTypes.shape),
   }).isRequired,
   driver: PropTypes.bool,
+  joinFunction: PropTypes.func,
 };
 RideItem.defaultProps = {
   driver: false,
+  joinFunction: null,
 };

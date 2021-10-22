@@ -15,24 +15,12 @@ const axios = require('axios');
 
 describe('postRide', () => {
   it('Should send data in the correct format', () => {
-    serverUtils.ride.postRide(postRide.client);
+    serverUtils.rides.postRide(postRide.client);
   });
 });
 
-describe('getUser', () => {});
+describe('getUser', () => { });
 
-describe('getMessages', () => {});
+describe('getMessages', () => { });
 
-describe('getMessages', () => {});
-
-describe('user', () => {
-  describe('getRides', () => {
-    let rides;
-    beforeAll(async () => {
-      rides = await serverUtils.user.getRides(3);
-    });
-    it('should return an array', () => {
-      expect(Array.isArray(rides)).toBe(true);
-    });
-  });
-});
+describe('getMessages', () => { });

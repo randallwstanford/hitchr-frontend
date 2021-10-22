@@ -1,0 +1,12 @@
+#root {
+  overflow-x: hidden;
+}
+
+.username {
+  text-align: center;
+  width: 15rem;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: var(--med);
+  border: 2px solid var(--dark);
+}

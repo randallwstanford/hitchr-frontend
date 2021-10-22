@@ -9,7 +9,7 @@ import RideItem from '../RideItem/RideItem';
 const RideList = ({ rides, noList }) => (
   <div id="RideList">
     {
-      rides.length
+      rides && rides.length
         ? rides.map((ride) => <RideItem ride={ride} key={ride.rideId} />)
         : noList
     }
@@ -23,11 +23,12 @@ RideList.propTypes = {
       rideId: PropTypes.number.isRequired,
       driver: PropTypes.shape({
         username: PropTypes.string.isRequired,
-      }).isRequired,
+      }),
     }),
-  ).isRequired,
-  noList: PropTypes.shape,
+  ),
+  noList: PropTypes.element,
 };
 RideList.defaultProps = {
+  rides: null,
   noList: null,
 };
