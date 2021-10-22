@@ -41,25 +41,56 @@ const Dashboard = () => {
           <span>{ username }</span>
           <PayMethodList methods={paymentMethods} />
         </div>
-        <div id="user-rides">
-          <div id="UpcomingRides">
-            <h2>Upcoming Rides</h2>
-            <RideList
-              rides={rides.filter((ride) => !ride.completed)}
-              noList={<NoComingRides />}
-              completeRide={completeRide}
-            />
+        <div>
+          <div id="user-rides">
+            <h2>Driver Dashboard</h2>
+            <div id="UpcomingRides">
+              <h3>Upcoming Rides</h3>
+              <RideList
+                rides={
+                  rides && rides.driver
+                    ? rides.driver.filter((ride) => !ride.completed)
+                    : null
+                }
+                noList={<NoComingRides />}
+                completeRide={completeRide}
+              />
+            </div>
+            <div id="UpcomingRides">
+              <h3>Past Rides</h3>
+              <RideList
+                rides={
+                  rides && rides.driver ? rides.driver
+                    .filter((ride) => ride.completed)
+                    .sort((a, b) => (a.rideId > b.rideId ? -1 : 1))
+                    : null
+                }
+                noList={<NoPastRides />}
+              />
+            </div>
           </div>
-          <div id="UpcomingRides">
-            <h2>Past Rides</h2>
-            <RideList
-              rides={
-                rides
-                  .filter((ride) => ride.completed)
-                  .sort((a, b) => (a.rideId > b.rideId ? -1 : 1))
-              }
-              noList={<NoPastRides />}
-            />
+          <div id="user-rides">
+            <h2>Rider Dashboard</h2>
+            <div id="UpcomingRides">
+              <h3>Upcoming Rides</h3>
+              <RideList
+                rides={rides && rides.rider ? rides.rider.filter((ride) => !ride.completed) : null}
+                noList={<NoComingRides />}
+                completeRide={completeRide}
+              />
+            </div>
+            <div id="UpcomingRides">
+              <h3>Past Rides</h3>
+              <RideList
+                rides={
+                  rides && rides.rider ? rides.rider
+                    .filter((ride) => ride.completed)
+                    .sort((a, b) => (a.rideId > b.rideId ? -1 : 1))
+                    : null
+                }
+                noList={<NoPastRides />}
+              />
+            </div>
           </div>
         </div>
       </UpdateContext.Provider>
