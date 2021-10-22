@@ -15,9 +15,16 @@
 #user-rides{
   background-color: var(--med);
   padding: 1rem;
+  margin-bottom: 1rem;
 }
 #user-rides h2{
-  border-bottom: 0.25rem solid var(--dark);
+  text-align: center;
+  background-color: hsla(0, 0%, 90%, 0.5);
+  padding: 0.25rem;
+}
+#user-rides h3{
+  border-top: 0.25rem solid var(--dark);
+  padding: 0.5rem;
 }
 #user-info span{
   font-size: 1.25rem;
