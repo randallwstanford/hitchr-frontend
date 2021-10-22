@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
+import './Auth.css';
+
 import AddPaymentMethod from '../../components/AddPaymentMethod/AddPaymentMethod';
 
 const Auth = (props) => {
@@ -23,9 +25,9 @@ const Auth = (props) => {
   };
 
   return (
-    <div>
-      <h1>Hitchr</h1>
-      <form>
+    <div id="register-panel">
+      <form id="register-form">
+        <h2>Register</h2>
         <label htmlFor="username">
           Username
           <input id="username" name="username" placeholder="Johnny123" onChange={(e) => setUsername(e.target.value)} />
@@ -47,16 +49,30 @@ const Auth = (props) => {
           ? <AddPaymentMethod savePaymentMethod={savePaymentMethod} />
           : <button type="button" onClick={() => setEditngPaymentMethod(true)}>Add Payment Method</button>}
 
-        <div>
-          Do you plan on driving?
-          <label>
-            No
-            <input type="radio" value="false" name="driver" onChange={() => setIsDriver(false)} />
-          </label>
-          <label>
-            Yes
-            <input type="radio" value="true" name="driver" onChange={() => setIsDriver(true)} />
-          </label>
+        <div id="driver-options">
+          <span>Do you plan on driving?</span>
+          <div id="driver-option-radio-btns">
+            <label htmlFor="driver-false-radio">
+              No
+              <input
+                id="driver-false-radio"
+                type="radio"
+                value="false"
+                name="driver"
+                onChange={() => setIsDriver(false)}
+              />
+            </label>
+            <label htmlFor="driver-true-radio">
+              Yes
+              <input
+                id="driver-true-radio"
+                type="radio"
+                value="true"
+                name="driver"
+                onChange={() => setIsDriver(true)}
+              />
+            </label>
+          </div>
         </div>
       </form>
       <button type="button" onClick={createAccount}>Create New Account</button>
