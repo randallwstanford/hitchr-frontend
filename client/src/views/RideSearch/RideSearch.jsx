@@ -28,13 +28,9 @@ const RideSearch = () => {
     const end = document.getElementById('input-end-loc').value;
     const endId = document.querySelector(`#end-loc-list option[value="${end}"]`).dataset.value;
     serverUtils.rides.searchRide(startId, endId).then((results) => {
-      const unJoined = results.filter((ride) => {
-        return (
-          !ride.riders
-          || !ride.riders.length
-          || !ride.riders.includes(user.id)
-        );
-      });
+      const unJoined = results.filter(
+        (ride) => !ride.riders || !ride.riders.length || !ride.riders.includes(user.id),
+      );
       setRideResults(unJoined);
     });
     setRideResults([]);
