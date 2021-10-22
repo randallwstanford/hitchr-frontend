@@ -26,7 +26,7 @@ import userInfo from './dummyData/userInfo';
 import emptyUser from './dummyData/emptyUser';
 
 const App = () => {
-  const [user, setUser] = useState(process.env.NODE_ENV === 'development' ? camelcaseKeys(userInfo, { deep: true }) : emptyUser());
+  const [user, setUser] = useState(emptyUser());
 
   const logout = () => {
     setUser(emptyUser());
