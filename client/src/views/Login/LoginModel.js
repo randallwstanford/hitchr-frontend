@@ -1,8 +1,9 @@
 import api from '../../serverUtils';
 
-const LoginUser = (history, username, password) => api.auth.login(username, password)
+const LoginUser = (setUser) => (history, username, password) => api.auth.login(username, password)
   .then((result) => {
     if (result.status === 201) {
+      setUser(result.data);
       history.push('/');
     }
     return {};
