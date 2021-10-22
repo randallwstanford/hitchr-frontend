@@ -18,10 +18,10 @@ const RideItem = ({ ride }) => {
     updateFunction = updateContext.update;
   }
   const {
-    rideId, driver, startDest, endDest, completed, users,
+    rideId, driver, startDest, endDest, completed, riders,
   } = ride;
   const isDriver = driver.id === user.id;
-  const isRider = users && users.includes(user.id);
+  const isRider = riders && riders.includes(user.id);
   function handleJoin() {
     serverUtils.rides.addRider({ rideId, userId: user.id })
       .then(() => {
@@ -42,8 +42,8 @@ const RideItem = ({ ride }) => {
     <div className="RideItem" data-testid={`ride-result${rideId}`}>
       <a href={`/user/${driver.id}`}>{driver.username}</a>
       {
-        users && users.length
-          ? <span>{`+${users.length}`}</span>
+        riders && riders.length
+          ? <span>{`+${riders.length}`}</span>
           : <span>+0</span>
       }
       <span>{startDest}</span>

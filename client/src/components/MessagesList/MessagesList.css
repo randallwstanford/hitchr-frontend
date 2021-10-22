@@ -1,9 +1,19 @@
 .messages-container {
   margin: 0 auto;
-  border: 2px solid var(--dark);
   margin-bottom: 100px;
   width: 90%;
   text-align: center;
+
+}
+
+.current-username {
+  text-align: center;
+  width: 15rem;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  font-size: 30px;
+  padding: 15px;
+  padding-top: 20px;
   background-color: var(--med);
 }
 
