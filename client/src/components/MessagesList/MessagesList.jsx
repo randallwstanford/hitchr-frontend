@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
 // React
 import React, { useEffect, useState, useContext } from 'react';
@@ -58,7 +59,13 @@ const MessagesList = ({ messages }) => {
       <div data-testid="MessagesList" className="messages-container">
         {
           allMessages.length
-            ? allMessages.map((message) => <Message message={message} key={message.message_id} />)
+            ? allMessages.map((message) => {
+              return (
+                <div key={message.message_id}>
+                  <Message message={message} />
+                </div>
+              );
+            })
             : <div>No messages found!</div>
         }
         <form onSubmit={newMessage}>
@@ -73,9 +80,10 @@ const MessagesList = ({ messages }) => {
 export default MessagesList;
 
 MessagesList.propTypes = {
-  messages: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    timestamp: PropTypes.string.isRequired,
-  }).isRequired,
+  messages: PropTypes.instanceOf(Array).isRequired,
+  // messages: PropTypes.shape({
+  //   text: PropTypes.string.isRequired,
+  //   username: PropTypes.string.isRequired,
+  //   timestamp: PropTypes.string.isRequired,
+  // }).isRequired,
 };
