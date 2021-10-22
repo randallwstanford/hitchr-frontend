@@ -28,7 +28,8 @@ const Dashboard = () => {
   const completeRide = () => {
     const rideData = {};
     serverUtils.user.completeRide(rideData)
-      .then(() => {})
+      .then(() => { })
+      // eslint-disable-next-line no-console
       .catch((err) => console.log(err));
   };
   useEffect(() => {
@@ -38,7 +39,7 @@ const Dashboard = () => {
     <div id="Dashboard">
       <UpdateContext.Provider value={{ update: fetchRides }}>
         <div id="user-info">
-          <span>{ username }</span>
+          <span>{username}</span>
           <PayMethodList methods={paymentMethods} />
         </div>
         <div>
