@@ -1,0 +1,38 @@
+#register-panel{
+  max-width: 40rem;
+  display: flex;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--med);
+  padding: 2rem;
+}
+#register-panel h2{
+  border-bottom: 0.25rem solid var(--dark);
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+#register-form{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+#register-form label{
+  margin-bottom: 1rem;
+}
+#driver-option-radio-btns{
+  display: flex;
+  flex-direction: column;
+}
+#driver-option-radio-btns label{
+  display: flex;
+  align-items: center;
+}
+#driver-option-radio-btns label{
+  display: flex;
+  align-items: center;
+}
+#driver-option-radio-btns input{
+  width: 3rem;
+}

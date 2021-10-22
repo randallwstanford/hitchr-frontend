@@ -20,10 +20,9 @@ const Login = (props) => {
   };
 
   return (
-    <div>
-      <h1>Hitchr</h1>
+    <div id="login-panel">
       <h2>Login</h2>
-      <form>
+      <form id="login-form">
         <label htmlFor="username">
           Username
           <input id="username" name="username" placeholder="Johnny123" onChange={(e) => setUsername(e.target.value)} />

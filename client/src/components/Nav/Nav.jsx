@@ -18,16 +18,21 @@ const Nav = ({ logoutCallback }) => {
       </div>
       <div id="navRight">
         <a href="/search">Search Rides</a>
-        <a href="/create">Create Ride</a>
-        {user.sessionId
-          ? (
-            <div id="user-control">
-              <a id="username" href="/dashboard">{user.username}</a>
-              <button type="button" onClick={logoutCallback}>Logout</button>
-            </div>
-          )
-          :
-          null}
+        {
+          user.isDriver
+            ? <a href="/create">Create Ride</a>
+            : null
+        }
+        {
+          user.sessionId
+            ? (
+              <div id="user-control">
+                <a id="username" href="/dashboard">{user.username}</a>
+                <button type="button" onClick={logoutCallback}>Logout</button>
+              </div>
+            )
+            : null
+        }
       </div>
     </div>
   );

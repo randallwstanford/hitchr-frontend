@@ -24,15 +24,3 @@ describe('getUser', () => { });
 describe('getMessages', () => { });
 
 describe('getMessages', () => { });
-
-describe('user', () => {
-  describe('getRides', () => {
-    let rides;
-    beforeAll(async () => {
-      rides = await serverUtils.user.getRides(3);
-    });
-    it('should return an array', () => {
-      expect(Array.isArray(rides)).toBe(true);
-    });
-  });
-});
