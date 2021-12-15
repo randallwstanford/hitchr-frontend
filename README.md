@@ -1,4 +1,8 @@
 # "Hitchr" Client - The Creative Otters
+![Screen Shot 2021-11-05 at 3 48 51 PM](https://user-images.githubusercontent.com/83252804/146260695-79c508bf-f886-445a-8410-78d47f6b68aa.png)
+
+![Screen Shot 2021-11-05 at 3 50 53 PM](https://user-images.githubusercontent.com/83252804/146260705-23c13e4b-c563-470d-a324-327894297d6e.png)
+
 
 ## Background
 
