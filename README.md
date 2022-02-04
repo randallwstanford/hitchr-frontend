@@ -1,10 +1,23 @@
 # "Hitchr" Client - The Creative Otters
+
+## Table Of Contents
+* [About](#about)
+* [Concept](#concept)
+* [Technologies](#technologies)
+* [Installation](#installation)
+* [Scripts](#scripts)
+* [Project Structure](#project-structure)
+* [Views](#views)
+* [User](#user)
+* [Auth](#auth)
+* [Screenshots](#screenshots)
+
+## Screenshots
 ![Screen Shot 2021-11-05 at 3 48 51 PM](https://user-images.githubusercontent.com/83252804/146260695-79c508bf-f886-445a-8410-78d47f6b68aa.png)
 
 ![Screen Shot 2021-11-05 at 3 50 53 PM](https://user-images.githubusercontent.com/83252804/146260705-23c13e4b-c563-470d-a324-327894297d6e.png)
 
-
-## Background
+## About
 
 *Hitchr* is a full-stack assignment for the Hack Reactor software engineering immersive program.
 
@@ -16,21 +29,17 @@ This repo contains the *Hitchr* _**client**_ app for **The Creative Otters**, a 
 - Cade Kreikemeier - *Software Engineer*
 - Yunfan Gao - *Software Engineer*
 
-The _**backend**_ of this fullstack app can be found in a **[different repo](https://github.com/The-Creative-Beavers/hitchr-backend)**. All details laid out in this repo are in regards to the **client app** specifically.
-
 These five developers were given roughly 1.5 weeks to build out a fullstack web application from scratch according to a rough concept from a mock client.
 
----
 
-## The Concept
+## Concept
 
 ***Hitchr*** is a fullstack web app that allows users to post drives they will be taking (_i.e. a specific starting destination and ending destination_) so that other users can search for rides they wish to take and find posted trips that match their search.
 
 The ultimate goal of _Hitchr_ is to reduce car traffic by allowing users to rideshare for long drives.
 
----
 
-## Primary Technologies
+## Technologies
 
 This project's client app was built using the following primary technologies
 
@@ -45,27 +54,21 @@ This project's client app was built using the following primary technologies
 - **Jest + React-Testing-Library**
     - Testing framework and library used for unit tests, integration tests, and end-to-end tests.
 
----
-
 ## Installation
 
 Steps for getting started as a developer on this repo:
+- Clone this repo onto your local machine.
+```
+$ cd ./hitchr
+$ npm install
+```
 
-1. Clone this repo onto your local machine:
-    - ```git clone https://github.com/The-Creative-Beavers/hitchr-frontend.git```
-2. ```cd``` into the repo's root directory
-3. Install the project's depencies:
-    - ```npm install```
-4. Start developing!
+## Scripts
 
----
-
-## Provided Scripts
-
-- ```npm run dev-build```
+- `npm run dev-build`
     - bundles the contents of the ```src/``` directory (also transpiling JavaScript as needed for browser consumption) into bundled ```.js``` and ```.css``` files which are linked into the ```index.html``` page, then __watches for changes and re-bundles on each file change.__
     - builds the app to **make API requests to localhost:5000**
-- ```npm run dev-build-island```
+- `npm run dev-build-island`
     - bundles the contents of the ```src/``` directory (also transpiling JavaScript as needed for browser consumption) into bundled ```.js``` and ```.css``` files which are linked into the ```index.html``` page, then __watches for changes and re-bundles on each file change.__
     - builds the app with **no specified API URL**, which allows to test with dummy data instead of the API, e.g:
     ``` javascript
@@ -87,10 +90,7 @@ Steps for getting started as a developer on this repo:
     - runs **eslint** on the full repo to check for syntax errors of code-style violations. This repo ueses the **AirBnB Style Guide**
     - _**NOTE:**_ This repo's GitHub origin will not merge any updates that do not the linter.
 
----
-
 ## Project Structure
-
 
 - ```client/```
     - files related to the ReactJS client application
@@ -120,7 +120,6 @@ Steps for getting started as a developer on this repo:
 - etc...
     - config files for webpack, babel, jest, etc
 
----
 
 ## Views
 
@@ -131,15 +130,13 @@ This section describes each of the app's views.
 Below are the wireframe designs for each View:
 
 
-| `RideSearch` | `CreateRide` | `User` |
+| RideSearch | CreateRide | User |
 |-|-|-|
 |![RideSearch wireframe](readmeImgs/RideSearch.jpg)|![CreateRide wireframe](readmeImgs/CreateRide.jpg)|![User wireframe](readmeImgs/User.jpg)|
-| **`Dashboard`** | **`Dashboard`** (w/ review modal) | **`Auth`** |
+| Dashboard | Dashboard (w/ review modal) | Auth |
 ![Dashboard wireframe](readmeImgs/Dashboard.jpg)|![Dashboard w/ review wireframe](readmeImgs/Dashboard-Review.jpg)|![CreateRide wireframe](readmeImgs/Auth.jpg)|
 
----
-
-### `RideSearch`
+### RideSearch
 
 The `RideSearch` view allows users to input a starting city and ending city and see any posted rides matching their search inputs.
 
@@ -150,15 +147,13 @@ The `RideSearch` view allows users to input a starting city and ending city and 
     - `RideItem`
       - renders the relevant info (_username, etc_) for each ride result
 
----
-
-### `CreateRide`
+### CreateRide
 
 This view provides the user inputs necessary to post a new ride.
 
 ---
 
-### `Dashboard`
+### Dashboard
 
 The `Dashboard` view shows relevant info about the currently logged in user. This info includes their username, payment methods, and saved trips.
 
@@ -191,11 +186,11 @@ ___
 Renders user info for a specific user, as well as the currently logged in user's message history with the specified user.
 
 #### **Child Components:**
-- `PayMethodList` ***(shared)***
+- ### PayMethodList ***(shared)***
   - This component is shared by multiple views and is responsible for rendering each payment method associated with the user.
     - `PayMethod`
       - This component is rendered by `PayMethodList` and renders a single payment method (e.g. Venmo or Paypal etc) for a user's list of payment methods. This component renders an `<a>` link to the relevant account (e.g. their paypal URL etc) which is displayed as the name of the provider.
-- `MessageList`
+- ### MessageList
   - Renders the message history between the current user and the user of the current profile. Renders each specific message via a `Message` component.
     - `Message`
       - Child of `MessagesList` - renders a single message from the list.
