@@ -1,4 +1,4 @@
-# "Hitchr" Client - The Creative Otters
+# Hitchr 🚴🏼‍♂️ 🚴🏼 🚴🏼‍♀️
 
 ## Table Of Contents
 * [About](#about)
